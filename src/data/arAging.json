@@ -1,0 +1,9 @@
+[
+  { "c": "Blue Apron LLC",   "inv": 35, "total": 624215, "avg": 84,  "o60": 259469, "o3060": 364746, "cur": 0 },
+  { "c": "Factor75",         "inv": 3,  "total": 178532, "avg": 10,  "o60": 0,      "o3060": 0,      "cur": 178532 },
+  { "c": "Hello Fresh",      "inv": 6,  "total": 109698, "avg": 30,  "o60": 0,      "o3060": 0,      "cur": 105738 },
+  { "c": "Marley Spoon",     "inv": 2,  "total": 16800,  "avg": 100, "o60": 16800,  "o3060": 0,      "cur": 0 },
+  { "c": "Feast Food",       "inv": 1,  "total": 4229,   "avg": 13,  "o60": 0,      "o3060": 0,      "cur": 4229 },
+  { "c": "Russ & Daughters", "inv": 1,  "total": 559,    "avg": 36,  "o60": 0,      "o3060": 559,    "cur": 0 },
+  { "c": "McMahon's Farm",   "inv": 1,  "total": 153,    "avg": 143, "o60": 153,    "o3060": 0,      "cur": 0 }
+]
