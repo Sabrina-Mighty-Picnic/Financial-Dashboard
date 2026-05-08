@@ -2,6 +2,22 @@
 
 Vite + React + TypeScript dashboard, sourced from NetSuite (subsidiary id `2`).
 
+## View it on the web
+
+Hosted on GitHub Pages:
+**https://sabrina-mighty-picnic.github.io/Financial-Dashboard/**
+
+Every push to `main` or `claude/financial-dashboard-LkDpD` triggers
+`.github/workflows/deploy.yml`, which runs `npm run build` and publishes
+`dist/` to Pages. No local install required to view.
+
+### One-time setup on GitHub
+
+1. Open the repo on GitHub → **Settings → Pages**.
+2. Under **Build and deployment → Source**, choose **GitHub Actions**.
+3. Push any commit to `main` or `claude/financial-dashboard-LkDpD` (or trigger
+   the workflow manually from the **Actions** tab) — first deploy takes ~1 minute.
+
 ## Run locally
 
 ```
