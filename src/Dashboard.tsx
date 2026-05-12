@@ -287,10 +287,14 @@ export default function Dashboard() {
 
   const tR = yd.reduce((s, d) => s + d.r, 0);
   const tE = yd.reduce((s, d) => s + d.e, 0);
+  const tC = yd.reduce((s, d) => s + (d.c ?? 0), 0);
   const lyR = lyd.reduce((s, d) => s + d.r, 0);
   const lyE = lyd.reduce((s, d) => s + d.e, 0);
+  const lyC = lyd.reduce((s, d) => s + (d.c ?? 0), 0);
   const rG = lyR > 0 ? ((tR - lyR) / lyR) * 100 : 0;
   const eG = lyE > 0 ? ((tE - lyE) / lyE) * 100 : 0;
+  const gmCY = tR > 0 ? ((tR - tC) / tR) * 100 : 0;
+  const gmLY = lyR > 0 ? ((lyR - lyC) / lyR) * 100 : 0;
 
   const arY = useMemo(() => ARS.filter((d) => d.m.startsWith(yr)), [yr]);
   const arLY = useMemo(
@@ -558,10 +562,13 @@ export default function Dashboard() {
           <Overview
             tR={tR}
             tE={tE}
+            tC={tC}
             rG={rG}
             eG={eG}
             aAR={aAR}
             lyAAR={lyAAR}
+            gmCY={gmCY}
+            gmLY={gmLY}
             yr={yr}
             lyYr={lyYr}
             yd={yd}
@@ -597,13 +604,16 @@ export default function Dashboard() {
 function Overview(props: {
   tR: number;
   tE: number;
+  tC: number;
   rG: number;
   eG: number;
   aAR: number;
   lyAAR: number;
+  gmCY: number;
+  gmLY: number;
   yr: string;
   lyYr: string;
-  yd: { m: string; r: number; e: number }[];
+  yd: { m: string; r: number; e: number; c?: number }[];
   newCustYr: number;
   newSkuYr: number;
   growthChart: { month: string; "New Customers": number; "New SKUs": number }[];
@@ -611,17 +621,26 @@ function Overview(props: {
   skuDetails: { n: string; d: string }[];
 }) {
   const {
-    tR, tE, rG, eG, aAR, lyAAR, yr, yd, newCustYr, newSkuYr, growthChart, custDetails, skuDetails,
+    tR, tE, tC, rG, eG, aAR, lyAAR, gmCY, gmLY, yr, yd, newCustYr, newSkuYr, growthChart, custDetails, skuDetails,
   } = props;
-  const margin = tR > 0 ? ((tR - tE) / tR) * 100 : 0;
+  const opMargin = tR > 0 ? ((tR - tE) / tR) * 100 : 0;
+  const gmDelta = gmCY - gmLY;
   const chartData = yd.map((d) => ({ month: ml(d.m), Revenue: d.r, Expenses: d.e }));
   return (
     <div>
       <Sec sub={`Year-to-date snapshot for FY${yr}`}>Key Performance Indicators</Sec>
       <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
         <KPI label="Revenue" value={fmt(tR)} sub={`${yd.length} months posted`} trend={rG} up={rG >= 0} />
-        <KPI label="Expenses" value={fmt(tE)} trend={eG} up={eG <= 0} />
-        <KPI label="Gross Margin" value={pc(margin)} sub={fmt(tR - tE) + " net"} />
+        <KPI label="COGS" value={fmt(tC)} sub={fmt(tR - tC) + " gross profit"} />
+        <KPI
+          label="Gross Margin"
+          value={pc(gmCY)}
+          sub={`LY ${pc(gmLY)}`}
+          trend={gmDelta}
+          up={gmDelta >= 0}
+        />
+        <KPI label="Operating Expenses" value={fmt(tE)} trend={eG} up={eG <= 0} />
+        <KPI label="Operating Margin" value={pc(opMargin)} sub={fmt(tR - tE) + " op profit"} />
         <KPI
           label="AR Days"
           value={aAR + " days"}
