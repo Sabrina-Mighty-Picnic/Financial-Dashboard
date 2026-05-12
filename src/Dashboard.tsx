@@ -286,17 +286,16 @@ export default function Dashboard() {
   );
 
   const tR = yd.reduce((s, d) => s + d.r, 0);
+  const tC = yd.reduce((s, d) => s + ((d as any).c ?? 0), 0);
   const tE = yd.reduce((s, d) => s + d.e, 0);
   const lyR = lyd.reduce((s, d) => s + d.r, 0);
+  const lyC = lyd.reduce((s, d) => s + ((d as any).c ?? 0), 0);
   const lyE = lyd.reduce((s, d) => s + d.e, 0);
   const rG = lyR > 0 ? ((tR - lyR) / lyR) * 100 : 0;
   const eG = lyE > 0 ? ((tE - lyE) / lyE) * 100 : 0;
-  const profitObjForKpi = (PROFIT as any)[yr] || (PROFIT as any)[META.defaultYear];
-  const profitTotalsLY = (PROFIT as any)[lyYr]?.totals ?? null;
-  const tC = profitObjForKpi.totals.cst as number;
-  const gpFY = profitObjForKpi.totals.pft as number;
-  const gmCY = profitObjForKpi.totals.gp as number;
-  const gmLY = profitTotalsLY ? (profitTotalsLY.gp as number) : 0;
+  const gpFY = tR - tC;
+  const gmCY = tR > 0 ? (gpFY / tR) * 100 : 0;
+  const gmLY = lyR > 0 ? ((lyR - lyC) / lyR) * 100 : 0;
 
   const arY = useMemo(() => ARS.filter((d) => d.m.startsWith(yr)), [yr]);
   const arLY = useMemo(
@@ -627,9 +626,14 @@ function Overview(props: {
   const {
     tR, tE, tC, gpFY, rG, eG, aAR, lyAAR, gmCY, gmLY, yr, yd, newCustYr, newSkuYr, growthChart, custDetails, skuDetails,
   } = props;
-  const opMargin = tR > 0 ? ((tR - tE) / tR) * 100 : 0;
+  const opIncome = tR - tC - tE;
+  const opMargin = tR > 0 ? (opIncome / tR) * 100 : 0;
   const gmDelta = gmCY - gmLY;
-  const chartData = yd.map((d) => ({ month: ml(d.m), Revenue: d.r, Expenses: d.e }));
+  const chartData = yd.map((d) => ({
+    month: ml(d.m),
+    Revenue: d.r,
+    Expenses: ((d as any).c ?? 0) + d.e,
+  }));
   return (
     <div>
       <Sec sub={`Year-to-date snapshot for FY${yr} · Gross Margin from Income Statement`}>Key Performance Indicators</Sec>
@@ -643,8 +647,12 @@ function Overview(props: {
           trend={gmLY > 0 ? gmDelta : undefined}
           up={gmDelta >= 0}
         />
-        <KPI label="Operating Expenses" value={fmt(tE)} trend={eG} up={eG <= 0} />
-        <KPI label="Operating Margin" value={pc(opMargin)} sub={fmt(tR - tE) + " op profit"} />
+        <KPI label="Operating Expenses" value={fmt(tE)} sub="Excluding COGS" trend={eG} up={eG <= 0} />
+        <KPI
+          label="Operating Margin"
+          value={pc(opMargin)}
+          sub={fmt(opIncome) + (opIncome >= 0 ? " op profit" : " op loss")}
+        />
         <KPI
           label="AR Days"
           value={aAR + " days"}
