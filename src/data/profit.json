@@ -48,7 +48,12 @@
       { "s": "HF Peanut Butter 1.15oz", "rev": 116940, "cst": 94859,  "pft": 22081, "gp": 18.9 },
       { "s": "GC Apricot 5gal",         "rev": 50717,  "cst": 31142,  "pft": 19575, "gp": 38.6 },
       { "s": "Parmesan Cheese 1oz",     "rev": 104869, "cst": 86423,  "pft": 18447, "gp": 17.6 },
-      { "s": "BA Dijonnaise 18g",       "rev": 34631,  "cst": 18021,  "pft": 16610, "gp": 48.0 }
+      { "s": "BA Dijonnaise 18g",       "rev": 34631,  "cst": 18021,  "pft": 16610, "gp": 48.0 },
+      { "s": "California Sauce (Elote) 1.5oz (42.52g)", "rev": 55175, "cst": 41421, "pft": 13754, "gp": 24.9 },
+      { "s": "A-Sha Zimm's Peanut Butter Chili Crisp Mild 16oz", "rev": 49635, "cst": 36245, "pft": 13391, "gp": 27.0 },
+      { "s": "California Spice (Mexican Street Corn) 5g", "rev": 48746, "cst": 42815, "pft": 5931, "gp": 12.2 },
+      { "s": "Greek Vinaigrette 1.5oz (42g)", "rev": 83952, "cst": 80627, "pft": 3325, "gp": 4.0 },
+      { "s": "Fish Sauce .5 fl oz (18g)", "rev": 14336, "cst": 11556, "pft": 2780, "gp": 19.4 }
     ],
     "totals": { "rev": 2614789, "cst": 1894891, "pft": 719898, "gp": 27.5 }
   }
