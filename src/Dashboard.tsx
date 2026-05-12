@@ -449,6 +449,11 @@ export default function Dashboard() {
       const est = NEW_ITEM_ESTIMATES.find((e) => normalizeSku(e.n) === key);
       const actualCostPerUnit =
         est && profit && est.unitsShipped > 0 ? profit.cst / est.unitsShipped : null;
+      const freight = est?.freight ?? null;
+      const adjGm =
+        profit && profit.rev > 0 && freight !== null
+          ? ((profit.rev - profit.cst - freight) / profit.rev) * 100
+          : null;
       return {
         name: l.n,
         launchDate: l.d,
@@ -460,6 +465,8 @@ export default function Dashboard() {
         estCost: est?.estCost ?? null,
         estGm: est?.estGm ?? null,
         actualCost: actualCostPerUnit,
+        freight,
+        adjGm,
       };
     });
   }, [yr, profitObj]);
@@ -891,6 +898,8 @@ type NewItemRow = {
   estCost: number | null;
   estGm: number | null;
   actualCost: number | null;
+  freight: number | null;
+  adjGm: number | null;
 };
 
 function NewItems({ yr, rows }: { yr: string; rows: NewItemRow[] }) {
@@ -944,12 +953,12 @@ function NewItems({ yr, rows }: { yr: string; rows: NewItemRow[] }) {
         )}
       </Cd>
 
-      <Sec sub="Pre-production cost estimate vs actual COGS per unit, and estimated vs actual gross margin">
+      <Sec sub="Pre-production cost estimate vs actual COGS per unit, estimated vs actual gross margin, and gross margin after freight-out">
         Estimate vs Actual
       </Sec>
       <Cd>
         <div style={{ overflowX: "auto" }}>
-          <table style={{ width: "100%", borderCollapse: "collapse", minWidth: 1040 }}>
+          <table style={{ width: "100%", borderCollapse: "collapse", minWidth: 1200 }}>
             <thead>
               <tr>
                 <TH left>SKU</TH>
@@ -962,6 +971,8 @@ function NewItems({ yr, rows }: { yr: string; rows: NewItemRow[] }) {
                 <TH>Est. GM</TH>
                 <TH>Actual GM</TH>
                 <TH>Δ GM (pp)</TH>
+                <TH>Freight</TH>
+                <TH>Adj. GM</TH>
               </tr>
             </thead>
             <tbody>
@@ -1004,13 +1015,30 @@ function NewItems({ yr, rows }: { yr: string; rows: NewItemRow[] }) {
                           ? "—"
                           : (dGm >= 0 ? "+" : "") + dGm.toFixed(2) + " pp"}
                       </TD>
+                      <TD color={r.freight && r.freight > 0 ? C.tx : C.mt}>
+                        {r.freight && r.freight > 0 ? ff(r.freight) : "—"}
+                      </TD>
+                      <TD
+                        color={
+                          r.adjGm === null
+                            ? C.mt
+                            : r.adjGm >= 30
+                              ? C.gn
+                              : r.adjGm >= 20
+                                ? C.am
+                                : C.rd
+                        }
+                        bold={r.freight !== null && r.freight > 0}
+                      >
+                        {r.adjGm !== null ? pc(r.adjGm) : "—"}
+                      </TD>
                     </tr>
                   );
                 })}
               {rows.length === 0 && (
                 <tr>
                   <td
-                    colSpan={10}
+                    colSpan={12}
                     style={{
                       padding: "16px 12px",
                       textAlign: "center",
