@@ -29,6 +29,7 @@ import INV from "./data/inventory.json";
 import QTR_MARGIN from "./data/quarterlyMargin.json";
 import AR_AGING from "./data/arAging.json";
 import META from "./data/meta.json";
+import NEW_ITEM_ESTIMATES from "./data/newItemEstimates.json";
 
 const C = {
   bg: "#faf8f5",
@@ -445,7 +446,9 @@ export default function Dashboard() {
     return launches.map((l) => {
       const key = normalizeSku(l.n);
       const profit = profitItems.find((p) => normalizeSku(p.s) === key);
-      const qtr = (QTR_MARGIN as any[]).find((q) => normalizeSku(q.s) === key);
+      const est = NEW_ITEM_ESTIMATES.find((e) => normalizeSku(e.n) === key);
+      const actualCostPerUnit =
+        est && profit && est.unitsShipped > 0 ? profit.cst / est.unitsShipped : null;
       return {
         name: l.n,
         launchDate: l.d,
@@ -453,20 +456,10 @@ export default function Dashboard() {
         cst: profit?.cst ?? null,
         pft: profit?.pft ?? null,
         gp: profit?.gp ?? null,
-        qtr: qtr
-          ? {
-              q1: qtr.q1,
-              q2: qtr.q2,
-              q3: qtr.q3,
-              q4: qtr.q4,
-              q126: qtr.q126,
-              r1: qtr.r1,
-              r2: qtr.r2,
-              r3: qtr.r3,
-              r4: qtr.r4,
-              r126: qtr.r126,
-            }
-          : null,
+        units: est?.unitsShipped ?? null,
+        estCost: est?.estCost ?? null,
+        estGm: est?.estGm ?? null,
+        actualCost: actualCostPerUnit,
       };
     });
   }, [yr, profitObj]);
@@ -894,10 +887,10 @@ type NewItemRow = {
   cst: number | null;
   pft: number | null;
   gp: number | null;
-  qtr:
-    | { q1: number; q2: number; q3: number; q4: number; q126: number;
-        r1: number; r2: number; r3: number; r4: number; r126: number }
-    | null;
+  units: number | null;
+  estCost: number | null;
+  estGm: number | null;
+  actualCost: number | null;
 };
 
 function NewItems({ yr, rows }: { yr: string; rows: NewItemRow[] }) {
@@ -951,22 +944,24 @@ function NewItems({ yr, rows }: { yr: string; rows: NewItemRow[] }) {
         )}
       </Cd>
 
-      <Sec sub="Launch date, lifetime profitability where available, and quarterly trend">
-        Details
+      <Sec sub="Pre-production cost estimate vs actual COGS per unit, and estimated vs actual gross margin">
+        Estimate vs Actual
       </Sec>
       <Cd>
         <div style={{ overflowX: "auto" }}>
-          <table style={{ width: "100%", borderCollapse: "collapse", minWidth: 920 }}>
+          <table style={{ width: "100%", borderCollapse: "collapse", minWidth: 1040 }}>
             <thead>
               <tr>
                 <TH left>SKU</TH>
                 <TH left>Launched</TH>
-                <TH>Revenue (FY)</TH>
-                <TH>COGS (FY)</TH>
-                <TH>Profit (FY)</TH>
-                <TH>GM %</TH>
-                <TH>Latest Qtr GM</TH>
-                <TH>Latest Qtr Rev</TH>
+                <TH>Units</TH>
+                <TH>Revenue</TH>
+                <TH>Est. Cost / u</TH>
+                <TH>Actual Cost / u</TH>
+                <TH>Δ Cost</TH>
+                <TH>Est. GM</TH>
+                <TH>Actual GM</TH>
+                <TH>Δ GM (pp)</TH>
               </tr>
             </thead>
             <tbody>
@@ -974,19 +969,29 @@ function NewItems({ yr, rows }: { yr: string; rows: NewItemRow[] }) {
                 .slice()
                 .sort((a, b) => (b.gp ?? -1) - (a.gp ?? -1))
                 .map((r) => {
-                  const latestGM = r.qtr ? r.qtr.q126 : null;
-                  const latestRev = r.qtr ? r.qtr.r126 : null;
+                  const dCost =
+                    r.estCost !== null && r.actualCost !== null
+                      ? r.actualCost - r.estCost
+                      : null;
+                  const dGm =
+                    r.estGm !== null && r.gp !== null ? r.gp - r.estGm : null;
+                  const dollar = (n: number) => "$" + n.toFixed(2);
+                  const dollarSigned = (n: number) =>
+                    (n >= 0 ? "+$" : "-$") + Math.abs(n).toFixed(3);
                   return (
                     <tr key={r.name}>
                       <TD left bold>
                         {r.name}
                       </TD>
                       <TD left>{r.launchDate}</TD>
+                      <TD>{r.units !== null ? r.units.toLocaleString() : "—"}</TD>
                       <TD>{r.rev !== null ? ff(r.rev) : "—"}</TD>
-                      <TD>{r.cst !== null ? ff(r.cst) : "—"}</TD>
-                      <TD color={r.pft !== null ? C.gn : C.mt} bold={r.pft !== null}>
-                        {r.pft !== null ? ff(r.pft) : "—"}
+                      <TD>{r.estCost !== null ? dollar(r.estCost) : "—"}</TD>
+                      <TD>{r.actualCost !== null ? dollar(r.actualCost) : "—"}</TD>
+                      <TD color={dCost === null ? C.mt : dCost <= 0 ? C.gn : C.rd}>
+                        {dCost === null ? "—" : dollarSigned(dCost)}
                       </TD>
+                      <TD>{r.estGm !== null ? pc(r.estGm) : "—"}</TD>
                       <TD
                         color={
                           r.gp === null ? C.mt : r.gp >= 30 ? C.gn : r.gp >= 20 ? C.am : C.rd
@@ -994,27 +999,18 @@ function NewItems({ yr, rows }: { yr: string; rows: NewItemRow[] }) {
                       >
                         {r.gp !== null ? pc(r.gp) : "—"}
                       </TD>
-                      <TD
-                        color={
-                          latestGM === null || latestGM === 0
-                            ? C.mt
-                            : latestGM >= 30
-                              ? C.gn
-                              : latestGM >= 20
-                                ? C.am
-                                : C.rd
-                        }
-                      >
-                        {latestGM && latestGM > 0 ? pc(latestGM) : "—"}
+                      <TD color={dGm === null ? C.mt : dGm >= 0 ? C.gn : C.rd} bold={dGm !== null}>
+                        {dGm === null
+                          ? "—"
+                          : (dGm >= 0 ? "+" : "") + dGm.toFixed(2) + " pp"}
                       </TD>
-                      <TD>{latestRev && latestRev > 0 ? ff(latestRev) : "—"}</TD>
                     </tr>
                   );
                 })}
               {rows.length === 0 && (
                 <tr>
                   <td
-                    colSpan={8}
+                    colSpan={10}
                     style={{
                       padding: "16px 12px",
                       textAlign: "center",
