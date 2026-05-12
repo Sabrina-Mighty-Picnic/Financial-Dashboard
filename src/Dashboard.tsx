@@ -250,11 +250,20 @@ const TABS = [
   "Overview",
   "Sales vs LY",
   "Most Profitable Items",
+  "New Item Profitability",
   "Quarterly Review",
   "Inventory",
   "Open Sales Orders",
   "AR Days",
 ] as const;
+
+const normalizeSku = (s: string): string =>
+  s
+    .toLowerCase()
+    .replace(/\(.*?\)/g, "")
+    .replace(/\bsauce\b/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
 
 const QTRS = ["Q1'25", "Q2'25", "Q3'25", "Q4'25", "Q1'26"];
 const QTR_KEYS = ["q1", "q2", "q3", "q4", "q126"] as const;
@@ -424,6 +433,44 @@ export default function Dashboard() {
   const soTotal = useMemo(() => SO_PIPELINE.reduce((s, o) => s + o.a, 0), []);
   const soCount = SO_PIPELINE.length;
 
+  const newItemPerf = useMemo(() => {
+    const launches = NEW_SKU_DETAIL.filter((s) => s.d.startsWith(yr));
+    const profitItems = profitObj.items as {
+      s: string;
+      rev: number;
+      cst: number;
+      pft: number;
+      gp: number;
+    }[];
+    return launches.map((l) => {
+      const key = normalizeSku(l.n);
+      const profit = profitItems.find((p) => normalizeSku(p.s) === key);
+      const qtr = (QTR_MARGIN as any[]).find((q) => normalizeSku(q.s) === key);
+      return {
+        name: l.n,
+        launchDate: l.d,
+        rev: profit?.rev ?? null,
+        cst: profit?.cst ?? null,
+        pft: profit?.pft ?? null,
+        gp: profit?.gp ?? null,
+        qtr: qtr
+          ? {
+              q1: qtr.q1,
+              q2: qtr.q2,
+              q3: qtr.q3,
+              q4: qtr.q4,
+              q126: qtr.q126,
+              r1: qtr.r1,
+              r2: qtr.r2,
+              r3: qtr.r3,
+              r4: qtr.r4,
+              r126: qtr.r126,
+            }
+          : null,
+      };
+    });
+  }, [yr, profitObj]);
+
   return (
     <div style={{ background: C.bg, minHeight: "100vh", padding: "24px 28px 64px" }}>
       <div style={{ maxWidth: 1280, margin: "0 auto" }}>
@@ -530,6 +577,9 @@ export default function Dashboard() {
         )}
         {tab === "Most Profitable Items" && (
           <Profitable yr={yr} items={profitData} totals={profitTotals} />
+        )}
+        {tab === "New Item Profitability" && (
+          <NewItems yr={yr} rows={newItemPerf} />
         )}
         {tab === "Quarterly Review" && <Quarterly />}
         {tab === "Inventory" && <Inventory im={im} catData={catData} />}
@@ -832,6 +882,162 @@ function Profitable({
             ))}
           </tbody>
         </table>
+      </Cd>
+    </div>
+  );
+}
+
+type NewItemRow = {
+  name: string;
+  launchDate: string;
+  rev: number | null;
+  cst: number | null;
+  pft: number | null;
+  gp: number | null;
+  qtr:
+    | { q1: number; q2: number; q3: number; q4: number; q126: number;
+        r1: number; r2: number; r3: number; r4: number; r126: number }
+    | null;
+};
+
+function NewItems({ yr, rows }: { yr: string; rows: NewItemRow[] }) {
+  const withData = rows.filter((r) => r.gp !== null);
+  const noData = rows.filter((r) => r.gp === null);
+  const totalRev = withData.reduce((s, r) => s + (r.rev || 0), 0);
+  const totalPft = withData.reduce((s, r) => s + (r.pft || 0), 0);
+  const blendedGM = totalRev > 0 ? (totalPft / totalRev) * 100 : 0;
+  const chart = withData
+    .slice()
+    .sort((a, b) => (b.gp ?? 0) - (a.gp ?? 0))
+    .map((r) => ({ name: r.name, "GM %": r.gp ?? 0, Revenue: r.rev ?? 0 }));
+  return (
+    <div>
+      <Sec sub={`Launches in FY${yr} matched to current profitability data`}>
+        New Item Profitability
+      </Sec>
+      <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
+        <KPI label="New Items Launched" value={rows.length} sub={`In FY${yr}`} />
+        <KPI label="With Profit Data" value={withData.length} sub={`${noData.length} pending`} />
+        <KPI label="New-Item Revenue" value={fmt(totalRev)} sub={`FY${yr} matched SKUs`} />
+        <KPI label="Blended GM %" value={pc(blendedGM)} sub={fmt(totalPft) + " profit"} />
+      </div>
+
+      <Sec sub="Sorted by gross margin">Margin by new SKU</Sec>
+      <Cd>
+        {chart.length === 0 ? (
+          <div style={{ color: C.mt, fontSize: 13 }}>
+            No matched profitability rows yet. Once a new SKU appears in
+            <code style={{ background: C.acL, padding: "1px 6px", margin: "0 4px", borderRadius: 4 }}>
+              profit.json
+            </code>
+            or
+            <code style={{ background: C.acL, padding: "1px 6px", margin: "0 4px", borderRadius: 4 }}>
+              quarterlyMargin.json
+            </code>
+            it will appear here automatically.
+          </div>
+        ) : (
+          <div style={{ width: "100%", height: Math.max(280, chart.length * 32) }}>
+            <ResponsiveContainer>
+              <BarChart data={chart} layout="vertical" margin={{ left: 170 }}>
+                <CartesianGrid stroke={C.bd} strokeDasharray="3 3" />
+                <XAxis type="number" stroke={C.mt} fontSize={12} tickFormatter={(v) => v + "%"} />
+                <YAxis type="category" dataKey="name" stroke={C.mt} fontSize={11} width={170} />
+                <Tooltip content={<TT />} />
+                <Bar dataKey="GM %" fill={C.gn} radius={[0, 4, 4, 0]} />
+              </BarChart>
+            </ResponsiveContainer>
+          </div>
+        )}
+      </Cd>
+
+      <Sec sub="Launch date, lifetime profitability where available, and quarterly trend">
+        Details
+      </Sec>
+      <Cd>
+        <div style={{ overflowX: "auto" }}>
+          <table style={{ width: "100%", borderCollapse: "collapse", minWidth: 920 }}>
+            <thead>
+              <tr>
+                <TH left>SKU</TH>
+                <TH left>Launched</TH>
+                <TH>Revenue (FY)</TH>
+                <TH>COGS (FY)</TH>
+                <TH>Profit (FY)</TH>
+                <TH>GM %</TH>
+                <TH>Latest Qtr GM</TH>
+                <TH>Latest Qtr Rev</TH>
+              </tr>
+            </thead>
+            <tbody>
+              {rows
+                .slice()
+                .sort((a, b) => (b.gp ?? -1) - (a.gp ?? -1))
+                .map((r) => {
+                  const latestGM = r.qtr ? r.qtr.q126 : null;
+                  const latestRev = r.qtr ? r.qtr.r126 : null;
+                  return (
+                    <tr key={r.name}>
+                      <TD left bold>
+                        {r.name}
+                      </TD>
+                      <TD left>{r.launchDate}</TD>
+                      <TD>{r.rev !== null ? ff(r.rev) : "—"}</TD>
+                      <TD>{r.cst !== null ? ff(r.cst) : "—"}</TD>
+                      <TD color={r.pft !== null ? C.gn : C.mt} bold={r.pft !== null}>
+                        {r.pft !== null ? ff(r.pft) : "—"}
+                      </TD>
+                      <TD
+                        color={
+                          r.gp === null ? C.mt : r.gp >= 30 ? C.gn : r.gp >= 20 ? C.am : C.rd
+                        }
+                      >
+                        {r.gp !== null ? pc(r.gp) : "—"}
+                      </TD>
+                      <TD
+                        color={
+                          latestGM === null || latestGM === 0
+                            ? C.mt
+                            : latestGM >= 30
+                              ? C.gn
+                              : latestGM >= 20
+                                ? C.am
+                                : C.rd
+                        }
+                      >
+                        {latestGM && latestGM > 0 ? pc(latestGM) : "—"}
+                      </TD>
+                      <TD>{latestRev && latestRev > 0 ? ff(latestRev) : "—"}</TD>
+                    </tr>
+                  );
+                })}
+              {rows.length === 0 && (
+                <tr>
+                  <td
+                    colSpan={8}
+                    style={{
+                      padding: "16px 12px",
+                      textAlign: "center",
+                      color: C.mt,
+                      fontSize: 13,
+                      borderBottom: "1px solid " + C.bd,
+                    }}
+                  >
+                    No SKUs launched in FY{yr}
+                  </td>
+                </tr>
+              )}
+            </tbody>
+          </table>
+        </div>
+        {noData.length > 0 && (
+          <div style={{ marginTop: 14, fontSize: 12, color: C.mt }}>
+            <strong style={{ color: C.tx }}>{noData.length}</strong> launched SKU
+            {noData.length === 1 ? "" : "s"} have no matched profitability data yet — they will
+            populate once they appear in <code>profit.json</code> /{" "}
+            <code>quarterlyMargin.json</code> (next NetSuite refresh).
+          </div>
+        )}
       </Cd>
     </div>
   );
