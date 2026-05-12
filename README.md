@@ -74,7 +74,7 @@ Suggested prompt:
 | `newCustomers.json` / `newCustomerDetail.json` | `customer` records with `datecreated` in period |
 | `newSkus.json` / `newSkuDetail.json` | `item` records with `created` in period |
 | `salesOrders.json` | `transaction` where `type='SalesOrd'` and `status` in (`Pending Fulfillment`, `Partially Fulfilled`, `Pending Billing`) |
-| `profit.json` | Item Profitability by fiscal year (top 14 by gross profit) |
+| `profit.json` | Item Profitability by fiscal year (top items + IS-aligned totals). **`totals` block must match the Income Statement** (period-end COGS adjustments make this differ from raw GL postings). |
 | `inventory.json` | Inventory Valuation Detail + Inventory Activity Detail |
 | `quarterlyMargin.json` | Item Profitability pivoted by quarter |
 
