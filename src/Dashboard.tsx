@@ -644,8 +644,8 @@ function Overview(props: {
           trend={gmLY > 0 ? gmDelta : undefined}
           up={gmDelta >= 0}
         />
-        <KPI label="Operating Expenses" value={fmt(tE)} trend={eG} up={eG <= 0} />
-        <KPI label="Operating Margin" value={pc(opMargin)} sub={fmt(opProfit) + " op profit"} up={opMargin >= 0} />
+        <KPI label="Total Expenses" value={fmt(tE)} sub="OpEx + Other Expense" trend={eG} up={eG <= 0} />
+        <KPI label="Net Margin" value={pc(opMargin)} sub={fmt(opProfit) + " net income"} up={opMargin >= 0} />
         <KPI
           label="AR Days"
           value={aAR + " days"}
