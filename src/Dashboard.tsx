@@ -1424,7 +1424,7 @@ function ARDays({
 }
 
 function Opportunities() {
-  const all = OPPS as Array<{ id: string; d: string; c: string; a: number; stage: string; p: number; st: string; t: string; ps: number | null; psSrc: string | null; expC: string | null; actC: string | null; dDays: number | null; dToExp: number | null }>;
+  const all = OPPS as Array<{ id: string; d: string; c: string; a: number; stage: string; p: number; st: string; t: string; ps: number | null; psSrc: string | null; expC: string | null; actC: string | null; dDays: number | null; dToExp: number | null; dToClose: number | null }>;
   const open = all.filter((o) => o.st === "In Progress" || o.st === "Issued Estimate");
   const won = all.filter((o) => o.st === "Closed Won");
   const openValue = open.reduce((s, o) => s + o.a, 0);
@@ -1547,11 +1547,11 @@ function Opportunities() {
                   <table style={{ width: "100%", borderCollapse: "collapse" }}>
                     <thead>
                       <tr>
-                        <TH left>Opp</TH>
-                        <TH left>Customer</TH>
+                        <TH left>Title</TH>
                         <TH>Est. Close</TH>
                         <TH>Actual Close</TH>
                         <TH>Δ Days</TH>
+                        <TH>Days to Close</TH>
                         <TH>Amount</TH>
                       </tr>
                     </thead>
@@ -1561,8 +1561,7 @@ function Opportunities() {
                         .sort((a, b) => (a.dDays as number) - (b.dDays as number))
                         .map((o) => (
                           <tr key={o.id}>
-                            <TD left bold>{o.id}</TD>
-                            <TD left>{o.c}</TD>
+                            <TD left bold>{o.t}</TD>
                             <TD>{fmtDate(o.expC)}</TD>
                             <TD>{fmtDate(o.actC)}</TD>
                             <TD
@@ -1577,6 +1576,7 @@ function Opportunities() {
                             >
                               {fmtDays(o.dDays as number)}
                             </TD>
+                            <TD>{o.dToClose !== null ? o.dToClose + "d" : "—"}</TD>
                             <TD>{ff(o.a)}</TD>
                           </tr>
                         ))}

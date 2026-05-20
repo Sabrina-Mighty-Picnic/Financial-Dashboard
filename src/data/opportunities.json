@@ -13,7 +13,8 @@
     "expC": "2026-05-04",
     "actC": "2026-02-10",
     "dDays": -83,
-    "dToExp": null
+    "dToExp": null,
+    "dToClose": 119
   },
   {
     "id": "OPP8",
@@ -29,7 +30,8 @@
     "expC": "2026-01-05",
     "actC": "2025-11-03",
     "dDays": -63,
-    "dToExp": null
+    "dToExp": null,
+    "dToClose": 55
   },
   {
     "id": "OPP13",
@@ -45,7 +47,8 @@
     "expC": "2025-12-31",
     "actC": "2026-01-21",
     "dDays": 21,
-    "dToExp": null
+    "dToExp": null,
+    "dToClose": 133
   },
   {
     "id": "OPP49",
@@ -61,7 +64,8 @@
     "expC": "2026-07-06",
     "actC": "2026-05-08",
     "dDays": -59,
-    "dToExp": null
+    "dToExp": null,
+    "dToClose": 108
   },
   {
     "id": "OPP21",
@@ -77,7 +81,8 @@
     "expC": "2026-04-06",
     "actC": "2026-01-12",
     "dDays": -84,
-    "dToExp": null
+    "dToExp": null,
+    "dToClose": 96
   },
   {
     "id": "OPP31",
@@ -93,7 +98,8 @@
     "expC": "2026-05-04",
     "actC": null,
     "dDays": null,
-    "dToExp": -16
+    "dToExp": -16,
+    "dToClose": null
   },
   {
     "id": "OPP71",
@@ -109,7 +115,8 @@
     "expC": "2026-09-07",
     "actC": null,
     "dDays": null,
-    "dToExp": 110
+    "dToExp": 110,
+    "dToClose": null
   },
   {
     "id": "OPP48",
@@ -125,7 +132,8 @@
     "expC": "2026-06-01",
     "actC": "2026-05-14",
     "dDays": -18,
-    "dToExp": null
+    "dToExp": null,
+    "dToClose": 126
   },
   {
     "id": "OPP33",
@@ -141,7 +149,8 @@
     "expC": "2026-01-05",
     "actC": null,
     "dDays": null,
-    "dToExp": -135
+    "dToExp": -135,
+    "dToClose": null
   },
   {
     "id": "OPP63",
@@ -157,7 +166,8 @@
     "expC": "2026-07-31",
     "actC": null,
     "dDays": null,
-    "dToExp": 72
+    "dToExp": 72,
+    "dToClose": null
   },
   {
     "id": "OPP5",
@@ -173,7 +183,8 @@
     "expC": "2025-09-04",
     "actC": "2025-09-04",
     "dDays": 0,
-    "dToExp": null
+    "dToExp": null,
+    "dToClose": 0
   },
   {
     "id": "OPP59",
@@ -189,7 +200,8 @@
     "expC": "2026-07-31",
     "actC": null,
     "dDays": null,
-    "dToExp": 72
+    "dToExp": 72,
+    "dToClose": null
   },
   {
     "id": "OPP17",
@@ -205,7 +217,8 @@
     "expC": "2025-09-24",
     "actC": "2025-09-24",
     "dDays": 0,
-    "dToExp": null
+    "dToExp": null,
+    "dToClose": 0
   },
   {
     "id": "OPP60",
@@ -221,7 +234,8 @@
     "expC": "2026-07-31",
     "actC": null,
     "dDays": null,
-    "dToExp": 72
+    "dToExp": 72,
+    "dToClose": null
   },
   {
     "id": "OPP25",
@@ -237,7 +251,8 @@
     "expC": "2026-04-06",
     "actC": "2026-05-08",
     "dDays": 32,
-    "dToExp": null
+    "dToExp": null,
+    "dToClose": 198
   },
   {
     "id": "OPP62",
@@ -253,7 +268,8 @@
     "expC": "2026-07-31",
     "actC": null,
     "dDays": null,
-    "dToExp": 72
+    "dToExp": 72,
+    "dToClose": null
   },
   {
     "id": "OPP37",
@@ -269,7 +285,8 @@
     "expC": "2026-05-04",
     "actC": "2026-05-08",
     "dDays": 4,
-    "dToExp": null
+    "dToExp": null,
+    "dToClose": 169
   },
   {
     "id": "OPP26",
@@ -285,7 +302,8 @@
     "expC": "2026-04-06",
     "actC": "2026-03-10",
     "dDays": -27,
-    "dToExp": null
+    "dToExp": null,
+    "dToClose": 139
   },
   {
     "id": "OPP61",
@@ -301,7 +319,8 @@
     "expC": "2026-07-31",
     "actC": null,
     "dDays": null,
-    "dToExp": 72
+    "dToExp": 72,
+    "dToClose": null
   },
   {
     "id": "OPP65",
@@ -317,7 +336,8 @@
     "expC": "2026-07-06",
     "actC": null,
     "dDays": null,
-    "dToExp": 47
+    "dToExp": 47,
+    "dToClose": null
   },
   {
     "id": "OPP69",
@@ -333,7 +353,8 @@
     "expC": "2026-09-07",
     "actC": null,
     "dDays": null,
-    "dToExp": 110
+    "dToExp": 110,
+    "dToClose": null
   },
   {
     "id": "OPP51",
@@ -349,7 +370,8 @@
     "expC": "2026-01-26",
     "actC": null,
     "dDays": null,
-    "dToExp": -114
+    "dToExp": -114,
+    "dToClose": null
   },
   {
     "id": "OPP82",
@@ -365,7 +387,8 @@
     "expC": "2026-10-05",
     "actC": null,
     "dDays": null,
-    "dToExp": 138
+    "dToExp": 138,
+    "dToClose": null
   },
   {
     "id": "OPP81",
@@ -381,7 +404,8 @@
     "expC": "2026-11-02",
     "actC": null,
     "dDays": null,
-    "dToExp": 166
+    "dToExp": 166,
+    "dToClose": null
   },
   {
     "id": "OPP73",
@@ -397,7 +421,8 @@
     "expC": "2026-11-06",
     "actC": null,
     "dDays": null,
-    "dToExp": 170
+    "dToExp": 170,
+    "dToClose": null
   },
   {
     "id": "OPP80",
@@ -413,7 +438,8 @@
     "expC": "2026-11-02",
     "actC": null,
     "dDays": null,
-    "dToExp": 166
+    "dToExp": 166,
+    "dToClose": null
   },
   {
     "id": "OPP74",
@@ -429,7 +455,8 @@
     "expC": "2026-11-06",
     "actC": null,
     "dDays": null,
-    "dToExp": 170
+    "dToExp": 170,
+    "dToClose": null
   },
   {
     "id": "OPP75",
@@ -445,7 +472,8 @@
     "expC": "2026-11-06",
     "actC": null,
     "dDays": null,
-    "dToExp": 170
+    "dToExp": 170,
+    "dToClose": null
   },
   {
     "id": "OPP72",
@@ -461,7 +489,8 @@
     "expC": "2026-11-02",
     "actC": null,
     "dDays": null,
-    "dToExp": 166
+    "dToExp": 166,
+    "dToClose": null
   },
   {
     "id": "OPP70",
@@ -477,7 +506,8 @@
     "expC": "2026-09-07",
     "actC": null,
     "dDays": null,
-    "dToExp": 110
+    "dToExp": 110,
+    "dToClose": null
   },
   {
     "id": "OPP68",
@@ -493,7 +523,8 @@
     "expC": "2026-07-31",
     "actC": null,
     "dDays": null,
-    "dToExp": 72
+    "dToExp": 72,
+    "dToClose": null
   },
   {
     "id": "OPP66",
@@ -509,7 +540,8 @@
     "expC": "2026-10-06",
     "actC": null,
     "dDays": null,
-    "dToExp": 139
+    "dToExp": 139,
+    "dToClose": null
   },
   {
     "id": "OPP64",
@@ -525,7 +557,8 @@
     "expC": "2026-08-31",
     "actC": null,
     "dDays": null,
-    "dToExp": 103
+    "dToExp": 103,
+    "dToClose": null
   },
   {
     "id": "OPP58",
@@ -541,7 +574,8 @@
     "expC": "2026-07-06",
     "actC": null,
     "dDays": null,
-    "dToExp": 47
+    "dToExp": 47,
+    "dToClose": null
   },
   {
     "id": "OPP56",
@@ -557,7 +591,8 @@
     "expC": "2026-06-01",
     "actC": null,
     "dDays": null,
-    "dToExp": 12
+    "dToExp": 12,
+    "dToClose": null
   },
   {
     "id": "OPP53",
@@ -573,7 +608,8 @@
     "expC": "2026-06-01",
     "actC": null,
     "dDays": null,
-    "dToExp": 12
+    "dToExp": 12,
+    "dToClose": null
   },
   {
     "id": "OPP41",
@@ -589,7 +625,8 @@
     "expC": "2026-05-01",
     "actC": null,
     "dDays": null,
-    "dToExp": -19
+    "dToExp": -19,
+    "dToClose": null
   },
   {
     "id": "OPP30",
@@ -605,7 +642,8 @@
     "expC": "2026-05-04",
     "actC": null,
     "dDays": null,
-    "dToExp": -16
+    "dToExp": -16,
+    "dToClose": null
   },
   {
     "id": "OPP20",
@@ -621,6 +659,7 @@
     "expC": "2026-04-01",
     "actC": null,
     "dDays": null,
-    "dToExp": -49
+    "dToExp": -49,
+    "dToClose": null
   }
 ]
