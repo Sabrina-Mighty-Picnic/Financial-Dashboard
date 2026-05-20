@@ -1415,16 +1415,16 @@ function ARDays({
 }
 
 function Opportunities() {
-  const all = OPPS as Array<{ id: string; d: string; c: string; a: number; stage: string; p: number; st: string; t: string }>;
+  const all = OPPS as Array<{ id: string; d: string; c: string; a: number; stage: string; p: number; st: string; t: string; ps: number | null }>;
   const open = all.filter((o) => o.st === "In Progress" || o.st === "Issued Estimate");
   const won = all.filter((o) => o.st === "Closed Won");
-  const lost = all.filter((o) => o.st === "Closed Lost");
   const openValue = open.reduce((s, o) => s + o.a, 0);
   const weighted = open.reduce((s, o) => s + (o.a * o.p) / 100, 0);
   const wonValue = won.reduce((s, o) => s + o.a, 0);
-  const winRate = won.length + lost.length > 0 ? (won.length / (won.length + lost.length)) * 100 : 0;
+  const ytdLinked = all.reduce((s, o) => s + (o.ps || 0), 0);
+  const taggedCount = all.filter((o) => o.ps !== null).length;
 
-  const STAGE_ORDER = ["In Discussion", "Identified Decision Makers", "Proposal", "In Negotiation", "Purchasing", "Closed Won", "Closed Lost"];
+  const STAGE_ORDER = ["In Discussion", "Identified Decision Makers", "Proposal", "In Negotiation", "Purchasing", "Closed Won"];
   const STAGE_COLOR: Record<string, string> = {
     "In Discussion": C.cy,
     "Identified Decision Makers": C.pr,
@@ -1432,9 +1432,8 @@ function Opportunities() {
     "In Negotiation": C.ac,
     "Purchasing": C.gn,
     "Closed Won": C.gn,
-    "Closed Lost": C.rd,
   };
-  const openByStage = STAGE_ORDER.filter((s) => s !== "Closed Won" && s !== "Closed Lost")
+  const openByStage = STAGE_ORDER.filter((s) => s !== "Closed Won")
     .map((stage) => {
       const list = open.filter((o) => o.stage === stage);
       return { stage, count: list.length, value: list.reduce((s, o) => s + o.a, 0) };
@@ -1452,14 +1451,14 @@ function Opportunities() {
 
   return (
     <div>
-      <Sec sub={`${all.length} total opportunities in NetSuite · ${open.length} open · ${won.length} won · ${lost.length} lost`}>
+      <Sec sub={`${all.length} active opportunities · ${open.length} open · ${won.length} won · Closed Lost hidden`}>
         Sales Pipeline
       </Sec>
       <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
         <KPI label="Open Pipeline" value={fmt(openValue)} sub={`${open.length} opportunities`} />
         <KPI label="Weighted Pipeline" value={fmt(weighted)} sub="By stage probability" />
         <KPI label="Closed Won" value={fmt(wonValue)} sub={`${won.length} opportunities`} />
-        <KPI label="Win Rate" value={pc(winRate)} sub={`${won.length} of ${won.length + lost.length} closed`} up={winRate >= 20} />
+        <KPI label="YTD Sales (linked items)" value={fmt(ytdLinked)} sub={`From ${taggedCount} opps with SKU tagged`} />
       </div>
 
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, marginTop: 24 }}>
@@ -1505,9 +1504,9 @@ function Opportunities() {
       </div>
 
       <div style={{ marginTop: 24 }}>
-        <Cd title="All opportunities (sorted by value)">
+        <Cd title="Open & won opportunities (sorted by value)">
           <div style={{ overflowX: "auto" }}>
-            <table style={{ width: "100%", borderCollapse: "collapse", minWidth: 920 }}>
+            <table style={{ width: "100%", borderCollapse: "collapse", minWidth: 1040 }}>
               <thead>
                 <tr>
                   <TH left>Opp</TH>
@@ -1518,6 +1517,7 @@ function Opportunities() {
                   <TH>Prob</TH>
                   <TH>Amount</TH>
                   <TH>Weighted</TH>
+                  <TH>YTD'26 Sales</TH>
                 </tr>
               </thead>
               <tbody>
@@ -1533,10 +1533,16 @@ function Opportunities() {
                     <TD>{o.p}%</TD>
                     <TD>{ff(o.a)}</TD>
                     <TD>{ff((o.a * o.p) / 100)}</TD>
+                    <TD color={o.ps === null ? C.mt : o.ps > 0 ? C.gn : C.tx}>
+                      {o.ps === null ? "—" : o.ps === 0 ? "$0" : ff(o.ps)}
+                    </TD>
                   </tr>
                 ))}
               </tbody>
             </table>
+          </div>
+          <div style={{ marginTop: 12, fontSize: 12, color: C.mt }}>
+            "YTD'26 Sales" sums invoiced revenue Jan–Apr 2026 across the SKU(s) linked to each opportunity. <strong style={{ color: C.tx }}>"—"</strong> means the opp was created against the generic <em>Quoted Item</em> / <em>Bulk Procurement</em> placeholder in NetSuite, so there's no real SKU to match against.
           </div>
         </Cd>
       </div>
