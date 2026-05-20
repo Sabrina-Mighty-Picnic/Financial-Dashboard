@@ -12,7 +12,7 @@
     { "i": "HF Peanut Butter Film",      "v": 16107, "p": 2.8 }
   ],
   "metrics": {
-    "2026": { "begVal": 631384, "endVal": 575232, "cogs": 1894891, "days": 120 },
+    "2026": { "begVal": 631384, "endVal": 575232, "cogs": 1942211, "days": 120 },
     "2025": { "begVal": 461966, "endVal": 565951, "cogs": 3401067, "days": 365 },
     "2024": { "begVal": 461966, "endVal": 461966, "cogs": 3243178, "days": 365 }
   },
