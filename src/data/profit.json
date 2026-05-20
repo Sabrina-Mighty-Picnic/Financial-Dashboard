@@ -1,60 +1,522 @@
 {
   "2024": {
     "items": [
-      { "s": "TJS Honey .5oz",        "rev": 684241, "cst": 370000, "pft": 314241, "gp": 45.9 },
-      { "s": "Peanut Butter 1.15oz",  "rev": 593466, "cst": 400000, "pft": 193466, "gp": 32.6 },
-      { "s": "Maple Syrup 1oz",       "rev": 488016, "cst": 350000, "pft": 138016, "gp": 28.3 },
-      { "s": "HF Cherry 1oz",         "rev": 376320, "cst": 250000, "pft": 126320, "gp": 33.6 },
-      { "s": "HF Apricot 1oz",        "rev": 313950, "cst": 210000, "pft": 103950, "gp": 33.1 },
-      { "s": "HF Red Pepper 1oz",     "rev": 300560, "cst": 200000, "pft": 100560, "gp": 33.5 },
-      { "s": "BA Hoisin 1.38oz",      "rev": 128080, "cst": 86000,  "pft": 42080,  "gp": 32.9 },
-      { "s": "HF Fig 1oz",            "rev": 117318, "cst": 78000,  "pft": 39318,  "gp": 33.5 },
-      { "s": "HF Cranberry 1oz",      "rev": 113244, "cst": 75000,  "pft": 38244,  "gp": 33.8 },
-      { "s": "Sesame Oil .5oz",       "rev": 145432, "cst": 110000, "pft": 35432,  "gp": 24.4 }
+      {
+        "s": "TJS Honey .5oz",
+        "rev": 684241,
+        "cst": 370000,
+        "pft": 314241,
+        "gp": 45.9
+      },
+      {
+        "s": "Peanut Butter 1.15oz",
+        "rev": 593466,
+        "cst": 400000,
+        "pft": 193466,
+        "gp": 32.6
+      },
+      {
+        "s": "Maple Syrup 1oz",
+        "rev": 488016,
+        "cst": 350000,
+        "pft": 138016,
+        "gp": 28.3
+      },
+      {
+        "s": "HF Cherry 1oz",
+        "rev": 376320,
+        "cst": 250000,
+        "pft": 126320,
+        "gp": 33.6
+      },
+      {
+        "s": "HF Apricot 1oz",
+        "rev": 313950,
+        "cst": 210000,
+        "pft": 103950,
+        "gp": 33.1
+      },
+      {
+        "s": "HF Red Pepper 1oz",
+        "rev": 300560,
+        "cst": 200000,
+        "pft": 100560,
+        "gp": 33.5
+      },
+      {
+        "s": "BA Hoisin 1.38oz",
+        "rev": 128080,
+        "cst": 86000,
+        "pft": 42080,
+        "gp": 32.9
+      },
+      {
+        "s": "HF Fig 1oz",
+        "rev": 117318,
+        "cst": 78000,
+        "pft": 39318,
+        "gp": 33.5
+      },
+      {
+        "s": "HF Cranberry 1oz",
+        "rev": 113244,
+        "cst": 75000,
+        "pft": 38244,
+        "gp": 33.8
+      },
+      {
+        "s": "Sesame Oil .5oz",
+        "rev": 145432,
+        "cst": 110000,
+        "pft": 35432,
+        "gp": 24.4
+      }
     ],
-    "totals": { "rev": 4393739, "cst": 3243178, "pft": 1150561, "gp": 26.2 }
+    "totals": {
+      "rev": 4393739,
+      "cst": 3243178,
+      "pft": 1150561,
+      "gp": 26.2
+    }
   },
   "2025": {
     "items": [
-      { "s": "TJS Honey .5oz",        "rev": 465640, "cst": 242421, "pft": 223219, "gp": 47.9 },
-      { "s": "HF Cranberry 1oz",      "rev": 392580, "cst": 260784, "pft": 131796, "gp": 33.6 },
-      { "s": "BA Soy Sauce .5oz",     "rev": 164260, "cst": 87185,  "pft": 77075,  "gp": 46.9 },
-      { "s": "HF Red Pepper 1oz",     "rev": 205140, "cst": 137463, "pft": 67677,  "gp": 33.0 },
-      { "s": "Maple Syrup 1oz",       "rev": 330408, "cst": 270523, "pft": 59885,  "gp": 18.1 },
-      { "s": "BA Blazing Buffalo 2oz","rev": 155766, "cst": 106276, "pft": 49490,  "gp": 31.8 },
-      { "s": "BA Hoisin 1.38oz",      "rev": 150907, "cst": 101996, "pft": 48911,  "gp": 32.4 },
-      { "s": "HF Apricot 1oz",        "rev": 174074, "cst": 126765, "pft": 47309,  "gp": 27.2 },
-      { "s": "BA Dijonnaise 18g",     "rev": 99778,  "cst": 52573,  "pft": 47205,  "gp": 47.3 },
-      { "s": "HF Fig 1oz",            "rev": 126840, "cst": 84407,  "pft": 42433,  "gp": 33.5 },
-      { "s": "Sesame Oil .5oz",       "rev": 222648, "cst": 190567, "pft": 32081,  "gp": 14.4 },
-      { "s": "HF Peanut Butter 1.15oz","rev": 143820,"cst": 117762, "pft": 26058,  "gp": 18.1 },
-      { "s": "BA Soy Miso 56g",       "rev": 59208,  "cst": 34880,  "pft": 24329,  "gp": 41.1 },
-      { "s": "HF Maple Syrup 1oz",    "rev": 112320, "cst": 88073,  "pft": 24247,  "gp": 21.6 }
+      {
+        "s": "TJS Honey .5oz",
+        "rev": 465640,
+        "cst": 242421,
+        "pft": 223219,
+        "gp": 47.9
+      },
+      {
+        "s": "HF Cranberry 1oz",
+        "rev": 392580,
+        "cst": 260784,
+        "pft": 131796,
+        "gp": 33.6
+      },
+      {
+        "s": "BA Soy Sauce .5oz",
+        "rev": 164260,
+        "cst": 87185,
+        "pft": 77075,
+        "gp": 46.9
+      },
+      {
+        "s": "HF Red Pepper 1oz",
+        "rev": 205140,
+        "cst": 137463,
+        "pft": 67677,
+        "gp": 33.0
+      },
+      {
+        "s": "Maple Syrup 1oz",
+        "rev": 330408,
+        "cst": 270523,
+        "pft": 59885,
+        "gp": 18.1
+      },
+      {
+        "s": "BA Blazing Buffalo 2oz",
+        "rev": 155766,
+        "cst": 106276,
+        "pft": 49490,
+        "gp": 31.8
+      },
+      {
+        "s": "BA Hoisin 1.38oz",
+        "rev": 150907,
+        "cst": 101996,
+        "pft": 48911,
+        "gp": 32.4
+      },
+      {
+        "s": "HF Apricot 1oz",
+        "rev": 174074,
+        "cst": 126765,
+        "pft": 47309,
+        "gp": 27.2
+      },
+      {
+        "s": "BA Dijonnaise 18g",
+        "rev": 99778,
+        "cst": 52573,
+        "pft": 47205,
+        "gp": 47.3
+      },
+      {
+        "s": "HF Fig 1oz",
+        "rev": 126840,
+        "cst": 84407,
+        "pft": 42433,
+        "gp": 33.5
+      },
+      {
+        "s": "Avocado Mayo Bulk",
+        "rev": 247590,
+        "cst": 208159,
+        "pft": 39431,
+        "gp": 15.9
+      },
+      {
+        "s": "Sesame Oil .5oz",
+        "rev": 222648,
+        "cst": 190567,
+        "pft": 32081,
+        "gp": 14.4
+      },
+      {
+        "s": "BA Sambal 21g",
+        "rev": 55234,
+        "cst": 29015,
+        "pft": 26219,
+        "gp": 47.5
+      },
+      {
+        "s": "BA Black Bean Sauce 56g",
+        "rev": 57087,
+        "cst": 30912,
+        "pft": 26175,
+        "gp": 45.9
+      },
+      {
+        "s": "HF Peanut Butter 1.15oz",
+        "rev": 143820,
+        "cst": 117762,
+        "pft": 26058,
+        "gp": 18.1
+      },
+      {
+        "s": "BA Gochujang 10g",
+        "rev": 64221,
+        "cst": 39505,
+        "pft": 24716,
+        "gp": 38.5
+      },
+      {
+        "s": "BA Soy Miso 56g",
+        "rev": 59208,
+        "cst": 34880,
+        "pft": 24329,
+        "gp": 41.1
+      },
+      {
+        "s": "HF Maple Syrup 1oz",
+        "rev": 112320,
+        "cst": 88073,
+        "pft": 24247,
+        "gp": 21.6
+      },
+      {
+        "s": "BA Dijon Mustard 21g",
+        "rev": 38496,
+        "cst": 19590,
+        "pft": 18906,
+        "gp": 49.1
+      },
+      {
+        "s": "BA Whole Grain Dijon 21g",
+        "rev": 32520,
+        "cst": 14028,
+        "pft": 18492,
+        "gp": 56.9
+      },
+      {
+        "s": "GC Apricot 5 gallon pail",
+        "rev": 49580,
+        "cst": 31379,
+        "pft": 18201,
+        "gp": 36.7
+      },
+      {
+        "s": "BA Hot Sauce 15g",
+        "rev": 60270,
+        "cst": 42598,
+        "pft": 17672,
+        "gp": 29.3
+      },
+      {
+        "s": "BA Chipotle .5oz (9g)",
+        "rev": 33728,
+        "cst": 16216,
+        "pft": 17512,
+        "gp": 51.9
+      },
+      {
+        "s": "HF Honey .5oz",
+        "rev": 156240,
+        "cst": 140601,
+        "pft": 15639,
+        "gp": 10.0
+      },
+      {
+        "s": "BA Sweet Chili 51g",
+        "rev": 72608,
+        "cst": 57783,
+        "pft": 14825,
+        "gp": 20.4
+      },
+      {
+        "s": "EP Soy Sauce .33oz",
+        "rev": 34924,
+        "cst": 21150,
+        "pft": 13774,
+        "gp": 39.4
+      },
+      {
+        "s": "Sherry Wine Vinegar",
+        "rev": 36876,
+        "cst": 23790,
+        "pft": 13086,
+        "gp": 35.5
+      },
+      {
+        "s": "Jamaican Jerk Sauce 1.5oz",
+        "rev": 58293,
+        "cst": 48186,
+        "pft": 10108,
+        "gp": 17.3
+      },
+      {
+        "s": "BA Red Harissa 21g",
+        "rev": 35638,
+        "cst": 26546,
+        "pft": 9092,
+        "gp": 25.5
+      },
+      {
+        "s": "Red Wine Vinegar .5oz",
+        "rev": 13346,
+        "cst": 7029,
+        "pft": 6317,
+        "gp": 47.3
+      },
+      {
+        "s": "BA Ketchup 62g",
+        "rev": 19964,
+        "cst": 13674,
+        "pft": 6291,
+        "gp": 31.5
+      },
+      {
+        "s": "CRAIT Apple Cider Vin. .5oz",
+        "rev": 10398,
+        "cst": 5099,
+        "pft": 5299,
+        "gp": 51.0
+      },
+      {
+        "s": "BA Peanut Butter (Salted) .7oz",
+        "rev": 15546,
+        "cst": 10645,
+        "pft": 4901,
+        "gp": 31.5
+      },
+      {
+        "s": "Ancho Chile Paste (Bulk)",
+        "rev": 10766,
+        "cst": 6341,
+        "pft": 4425,
+        "gp": 41.1
+      },
+      {
+        "s": "BA Ketchup 21g",
+        "rev": 8116,
+        "cst": 4051,
+        "pft": 4066,
+        "gp": 50.1
+      },
+      {
+        "s": "Bacon Jam (Uncured) 1oz",
+        "rev": 12126,
+        "cst": 8082,
+        "pft": 4044,
+        "gp": 33.3
+      },
+      {
+        "s": "Maple Bulk 55# Pail",
+        "rev": 15684,
+        "cst": 14760,
+        "pft": 924,
+        "gp": 5.9
+      },
+      {
+        "s": "Dijonnaise (Bulk)",
+        "rev": 610,
+        "cst": -74,
+        "pft": 684,
+        "gp": 112.2
+      },
+      {
+        "s": "Sweet White Miso (Bulk)",
+        "rev": 9576,
+        "cst": 9198,
+        "pft": 378,
+        "gp": 3.9
+      },
+      {
+        "s": "Dried Plum Puree (Bulk)",
+        "rev": 2202,
+        "cst": 2013,
+        "pft": 189,
+        "gp": 8.6
+      },
+      {
+        "s": "Maple Syrup Bulk (lb)",
+        "rev": 2310,
+        "cst": 2310,
+        "pft": 0,
+        "gp": 0.0
+      }
     ],
-    "totals": { "rev": 4943813, "cst": 3401067, "pft": 1542746, "gp": 31.2 }
+    "totals": {
+      "rev": 4943813,
+      "cst": 3401067,
+      "pft": 1542746,
+      "gp": 31.2
+    }
   },
   "2026": {
     "items": [
-      { "s": "TJS Honey .5oz",          "rev": 150880, "cst": 79362,  "pft": 71518, "gp": 47.4 },
-      { "s": "Avocado Mayo 30# (Bulk)", "rev": 401625, "cst": 337663, "pft": 63962, "gp": 15.9 },
-      { "s": "BA Sambal 21g",           "rev": 89184,  "cst": 46046,  "pft": 43138, "gp": 48.4 },
-      { "s": "HF Fig 1oz",              "rev": 116580, "cst": 76583,  "pft": 39997, "gp": 34.3 },
-      { "s": "BA Sweet Chili 51g",      "rev": 138526, "cst": 104850, "pft": 33676, "gp": 24.3 },
-      { "s": "HF Cranberry 1oz",        "rev": 87240,  "cst": 58302,  "pft": 28938, "gp": 33.2 },
-      { "s": "Fresh Catch Thai-ger Sweet Chili 7oz","rev": 85425,  "cst": 58220,  "pft": 27205, "gp": 31.8 },
-      { "s": "BA Hoisin 1.38oz",        "rev": 81116,  "cst": 55130,  "pft": 25986, "gp": 32.0 },
-      { "s": "BA Soy Sauce .5oz",       "rev": 58376,  "cst": 34602,  "pft": 23774, "gp": 40.7 },
-      { "s": "HF Apricot 1oz",          "rev": 100701, "cst": 75455,  "pft": 25246, "gp": 25.1 },
-      { "s": "HF Peanut Butter 1.15oz", "rev": 116940, "cst": 94859,  "pft": 22081, "gp": 18.9 },
-      { "s": "GC Apricot 5gal",         "rev": 50717,  "cst": 31142,  "pft": 19575, "gp": 38.6 },
-      { "s": "Parmesan Cheese 1oz",     "rev": 104869, "cst": 86423,  "pft": 18447, "gp": 17.6 },
-      { "s": "BA Dijonnaise 18g",       "rev": 34631,  "cst": 18021,  "pft": 16610, "gp": 48.0 },
-      { "s": "California Sauce (Elote) 1.5oz (42.52g)", "rev": 55175, "cst": 41421, "pft": 13754, "gp": 24.9 },
-      { "s": "A-Sha Zimm's Peanut Butter Chili Crisp Mild 16oz", "rev": 49635, "cst": 36245, "pft": 13391, "gp": 27.0 },
-      { "s": "California Spice (Mexican Street Corn) 5g", "rev": 48746, "cst": 42815, "pft": 5931, "gp": 12.2 },
-      { "s": "Greek Vinaigrette 1.5oz (42g)", "rev": 83952, "cst": 80627, "pft": 3325, "gp": 4.0 },
-      { "s": "Fish Sauce .5 fl oz (18g)", "rev": 14336, "cst": 11556, "pft": 2780, "gp": 19.4 }
+      {
+        "s": "TJS Honey .5oz",
+        "rev": 150880,
+        "cst": 79362,
+        "pft": 71518,
+        "gp": 47.4
+      },
+      {
+        "s": "Avocado Mayo 30# (Bulk)",
+        "rev": 401625,
+        "cst": 337663,
+        "pft": 63962,
+        "gp": 15.9
+      },
+      {
+        "s": "BA Sambal 21g",
+        "rev": 89184,
+        "cst": 46046,
+        "pft": 43138,
+        "gp": 48.4
+      },
+      {
+        "s": "HF Fig 1oz",
+        "rev": 116580,
+        "cst": 76583,
+        "pft": 39997,
+        "gp": 34.3
+      },
+      {
+        "s": "BA Sweet Chili 51g",
+        "rev": 138526,
+        "cst": 104850,
+        "pft": 33676,
+        "gp": 24.3
+      },
+      {
+        "s": "HF Cranberry 1oz",
+        "rev": 87240,
+        "cst": 58302,
+        "pft": 28938,
+        "gp": 33.2
+      },
+      {
+        "s": "Fresh Catch Thai-ger Sweet Chili 7oz",
+        "rev": 85425,
+        "cst": 58220,
+        "pft": 27205,
+        "gp": 31.8
+      },
+      {
+        "s": "BA Hoisin 1.38oz",
+        "rev": 81116,
+        "cst": 55130,
+        "pft": 25986,
+        "gp": 32.0
+      },
+      {
+        "s": "BA Soy Sauce .5oz",
+        "rev": 58376,
+        "cst": 34602,
+        "pft": 23774,
+        "gp": 40.7
+      },
+      {
+        "s": "HF Apricot 1oz",
+        "rev": 100701,
+        "cst": 75455,
+        "pft": 25246,
+        "gp": 25.1
+      },
+      {
+        "s": "HF Peanut Butter 1.15oz",
+        "rev": 116940,
+        "cst": 94859,
+        "pft": 22081,
+        "gp": 18.9
+      },
+      {
+        "s": "GC Apricot 5gal",
+        "rev": 50717,
+        "cst": 31142,
+        "pft": 19575,
+        "gp": 38.6
+      },
+      {
+        "s": "Parmesan Cheese 1oz",
+        "rev": 104869,
+        "cst": 86423,
+        "pft": 18447,
+        "gp": 17.6
+      },
+      {
+        "s": "BA Dijonnaise 18g",
+        "rev": 34631,
+        "cst": 18021,
+        "pft": 16610,
+        "gp": 48.0
+      },
+      {
+        "s": "California Sauce (Elote) 1.5oz (42.52g)",
+        "rev": 55175,
+        "cst": 41421,
+        "pft": 13754,
+        "gp": 24.9
+      },
+      {
+        "s": "A-Sha Zimm's Peanut Butter Chili Crisp Mild 16oz",
+        "rev": 49635,
+        "cst": 36245,
+        "pft": 13391,
+        "gp": 27.0
+      },
+      {
+        "s": "California Spice (Mexican Street Corn) 5g",
+        "rev": 48746,
+        "cst": 42815,
+        "pft": 5931,
+        "gp": 12.2
+      },
+      {
+        "s": "Greek Vinaigrette 1.5oz (42g)",
+        "rev": 83952,
+        "cst": 80627,
+        "pft": 3325,
+        "gp": 4.0
+      },
+      {
+        "s": "Fish Sauce .5 fl oz (18g)",
+        "rev": 14336,
+        "cst": 11556,
+        "pft": 2780,
+        "gp": 19.4
+      }
     ],
-    "totals": { "rev": 2623798, "cst": 1942211, "pft": 681587, "gp": 26.0 }
+    "totals": {
+      "rev": 2623798,
+      "cst": 1942211,
+      "pft": 681587,
+      "gp": 26.0
+    }
   }
 }

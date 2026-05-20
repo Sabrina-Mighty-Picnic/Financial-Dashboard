@@ -1027,6 +1027,7 @@ function NewItems({ yr, rows }: { yr: string; rows: NewItemRow[] }) {
             <tbody>
               {rows
                 .slice()
+                .filter((r) => r.gp !== null)
                 .sort((a, b) => (b.gp ?? -1) - (a.gp ?? -1))
                 .map((r) => {
                   const dCost =
