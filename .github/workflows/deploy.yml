@@ -5,6 +5,7 @@ on:
     branches:
       - main
       - claude/financial-dashboard-LkDpD
+      - claude/update-financial-dashboard-TLeER
   workflow_dispatch:
 
 permissions:

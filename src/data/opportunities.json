@@ -9,7 +9,11 @@
     "st": "Closed Won",
     "t": "Asha Peanut Butter, 16oz",
     "ps": 49635.24,
-    "psSrc": "linked"
+    "psSrc": "linked",
+    "expC": "2026-05-04",
+    "actC": "2026-02-10",
+    "dDays": -83,
+    "dToExp": null
   },
   {
     "id": "OPP8",
@@ -21,7 +25,11 @@
     "st": "Closed Won",
     "t": "Great Eastern Seafood/Stop and Shop, 7oz marinades",
     "ps": 85425,
-    "psSrc": "linked"
+    "psSrc": "linked",
+    "expC": "2026-01-05",
+    "actC": "2025-11-03",
+    "dDays": -63,
+    "dToExp": null
   },
   {
     "id": "OPP13",
@@ -33,7 +41,11 @@
     "st": "Closed Won",
     "t": "Greek Dressing, 1.5oz",
     "ps": 34992,
-    "psSrc": "title"
+    "psSrc": "title",
+    "expC": "2025-12-31",
+    "actC": "2026-01-21",
+    "dDays": 21,
+    "dToExp": null
   },
   {
     "id": "OPP49",
@@ -45,7 +57,11 @@
     "st": "Closed Won",
     "t": "Hello Fresh Peanut Satay, 2 fl oz",
     "ps": 0,
-    "psSrc": "linked"
+    "psSrc": "linked",
+    "expC": "2026-07-06",
+    "actC": "2026-05-08",
+    "dDays": -59,
+    "dToExp": null
   },
   {
     "id": "OPP21",
@@ -57,7 +73,11 @@
     "st": "Closed Won",
     "t": "GloriAnn Fresh Street Corn",
     "ps": null,
-    "psSrc": null
+    "psSrc": null,
+    "expC": "2026-04-06",
+    "actC": "2026-01-12",
+    "dDays": -84,
+    "dToExp": null
   },
   {
     "id": "OPP31",
@@ -69,7 +89,11 @@
     "st": "Issued Estimate",
     "t": "Little Spoon Marinara",
     "ps": null,
-    "psSrc": null
+    "psSrc": null,
+    "expC": "2026-05-04",
+    "actC": null,
+    "dDays": null,
+    "dToExp": -16
   },
   {
     "id": "OPP71",
@@ -81,7 +105,11 @@
     "st": "Issued Estimate",
     "t": "Hello Fresh Japanese Creamy Sesame Dressing, 2 oz",
     "ps": null,
-    "psSrc": null
+    "psSrc": null,
+    "expC": "2026-09-07",
+    "actC": null,
+    "dDays": null,
+    "dToExp": 110
   },
   {
     "id": "OPP48",
@@ -93,7 +121,11 @@
     "st": "Closed Won",
     "t": "Sofrito Base",
     "ps": 0,
-    "psSrc": "linked"
+    "psSrc": "linked",
+    "expC": "2026-06-01",
+    "actC": "2026-05-14",
+    "dDays": -18,
+    "dToExp": null
   },
   {
     "id": "OPP33",
@@ -105,7 +137,11 @@
     "st": "Issued Estimate",
     "t": "Factor Gochujang, Bulk",
     "ps": null,
-    "psSrc": null
+    "psSrc": null,
+    "expC": "2026-01-05",
+    "actC": null,
+    "dDays": null,
+    "dToExp": -135
   },
   {
     "id": "OPP63",
@@ -117,7 +153,11 @@
     "st": "In Progress",
     "t": "FR Tahini/Tahini Paste 1oz",
     "ps": null,
-    "psSrc": null
+    "psSrc": null,
+    "expC": "2026-07-31",
+    "actC": null,
+    "dDays": null,
+    "dToExp": 72
   },
   {
     "id": "OPP5",
@@ -129,7 +169,11 @@
     "st": "Closed Won",
     "t": "Bacon Jam, 1oz",
     "ps": 23876,
-    "psSrc": "linked"
+    "psSrc": "linked",
+    "expC": "2025-09-04",
+    "actC": "2025-09-04",
+    "dDays": 0,
+    "dToExp": null
   },
   {
     "id": "OPP59",
@@ -141,7 +185,11 @@
     "st": "In Progress",
     "t": "Deep Roasted Sesame Dressing, 1.5oz",
     "ps": null,
-    "psSrc": null
+    "psSrc": null,
+    "expC": "2026-07-31",
+    "actC": null,
+    "dDays": null,
+    "dToExp": 72
   },
   {
     "id": "OPP17",
@@ -153,7 +201,11 @@
     "st": "Closed Won",
     "t": "FG- HF Apricot, 1oz",
     "ps": 100701,
-    "psSrc": "linked"
+    "psSrc": "linked",
+    "expC": "2025-09-24",
+    "actC": "2025-09-24",
+    "dDays": 0,
+    "dToExp": null
   },
   {
     "id": "OPP60",
@@ -165,7 +217,11 @@
     "st": "In Progress",
     "t": "Chimichurri Sauce ,50g",
     "ps": null,
-    "psSrc": null
+    "psSrc": null,
+    "expC": "2026-07-31",
+    "actC": null,
+    "dDays": null,
+    "dToExp": 72
   },
   {
     "id": "OPP25",
@@ -177,7 +233,11 @@
     "st": "Closed Won",
     "t": "Hello Fresh Nuoc Cham, 1 fl oz",
     "ps": 0,
-    "psSrc": "linked"
+    "psSrc": "linked",
+    "expC": "2026-04-06",
+    "actC": "2026-05-08",
+    "dDays": 32,
+    "dToExp": null
   },
   {
     "id": "OPP62",
@@ -189,7 +249,11 @@
     "st": "In Progress",
     "t": "FR Fish Sauce, .5oz",
     "ps": 14336,
-    "psSrc": "title"
+    "psSrc": "title",
+    "expC": "2026-07-31",
+    "actC": null,
+    "dDays": null,
+    "dToExp": 72
   },
   {
     "id": "OPP37",
@@ -201,7 +265,11 @@
     "st": "Closed Won",
     "t": "Hello Fresh General Tso's Sauce, 3oz",
     "ps": 0,
-    "psSrc": "linked"
+    "psSrc": "linked",
+    "expC": "2026-05-04",
+    "actC": "2026-05-08",
+    "dDays": 4,
+    "dToExp": null
   },
   {
     "id": "OPP26",
@@ -213,7 +281,11 @@
     "st": "Closed Won",
     "t": "Hello Fresh Fish Sauce, .5 fl oz",
     "ps": 14336,
-    "psSrc": "title"
+    "psSrc": "title",
+    "expC": "2026-04-06",
+    "actC": "2026-03-10",
+    "dDays": -27,
+    "dToExp": null
   },
   {
     "id": "OPP61",
@@ -225,7 +297,11 @@
     "st": "In Progress",
     "t": "Red Curry Bulk",
     "ps": null,
-    "psSrc": null
+    "psSrc": null,
+    "expC": "2026-07-31",
+    "actC": null,
+    "dDays": null,
+    "dToExp": 72
   },
   {
     "id": "OPP65",
@@ -237,7 +313,11 @@
     "st": "Issued Estimate",
     "t": "Sesame Oil Bulk Drum",
     "ps": null,
-    "psSrc": null
+    "psSrc": null,
+    "expC": "2026-07-06",
+    "actC": null,
+    "dDays": null,
+    "dToExp": 47
   },
   {
     "id": "OPP69",
@@ -249,7 +329,11 @@
     "st": "Issued Estimate",
     "t": "Vegan Worcestershire Bulk",
     "ps": null,
-    "psSrc": null
+    "psSrc": null,
+    "expC": "2026-09-07",
+    "actC": null,
+    "dDays": null,
+    "dToExp": 110
   },
   {
     "id": "OPP51",
@@ -261,7 +345,11 @@
     "st": "Issued Estimate",
     "t": "Beyond Good Vanilla Powder, 5g",
     "ps": null,
-    "psSrc": null
+    "psSrc": null,
+    "expC": "2026-01-26",
+    "actC": null,
+    "dDays": null,
+    "dToExp": -114
   },
   {
     "id": "OPP82",
@@ -273,7 +361,11 @@
     "st": "In Progress",
     "t": "Misfits Market 2026 RFP",
     "ps": null,
-    "psSrc": null
+    "psSrc": null,
+    "expC": "2026-10-05",
+    "actC": null,
+    "dDays": null,
+    "dToExp": 138
   },
   {
     "id": "OPP81",
@@ -285,7 +377,11 @@
     "st": "In Progress",
     "t": "Hello Fresh Greef Sofrito, 3 oz",
     "ps": null,
-    "psSrc": null
+    "psSrc": null,
+    "expC": "2026-11-02",
+    "actC": null,
+    "dDays": null,
+    "dToExp": 166
   },
   {
     "id": "OPP73",
@@ -297,7 +393,11 @@
     "st": "In Progress",
     "t": "Hello Fresh Shredded Monterey Jack (1 oz)",
     "ps": null,
-    "psSrc": null
+    "psSrc": null,
+    "expC": "2026-11-06",
+    "actC": null,
+    "dDays": null,
+    "dToExp": 170
   },
   {
     "id": "OPP80",
@@ -309,7 +409,11 @@
     "st": "In Progress",
     "t": "Hello Fresh Shredded Cheddar (2 oz)",
     "ps": null,
-    "psSrc": null
+    "psSrc": null,
+    "expC": "2026-11-02",
+    "actC": null,
+    "dDays": null,
+    "dToExp": 166
   },
   {
     "id": "OPP74",
@@ -321,7 +425,11 @@
     "st": "In Progress",
     "t": "Hello Fresh Shredded Mozzarella (2 oz)",
     "ps": null,
-    "psSrc": null
+    "psSrc": null,
+    "expC": "2026-11-06",
+    "actC": null,
+    "dDays": null,
+    "dToExp": 170
   },
   {
     "id": "OPP75",
@@ -333,7 +441,11 @@
     "st": "In Progress",
     "t": "Hello Fresh Shredded Mexican Cheese Blend (2 oz)",
     "ps": null,
-    "psSrc": null
+    "psSrc": null,
+    "expC": "2026-11-06",
+    "actC": null,
+    "dDays": null,
+    "dToExp": 170
   },
   {
     "id": "OPP72",
@@ -345,7 +457,11 @@
     "st": "In Progress",
     "t": "Hello Fresh Shredded Gruyere, 2oz",
     "ps": null,
-    "psSrc": null
+    "psSrc": null,
+    "expC": "2026-11-02",
+    "actC": null,
+    "dDays": null,
+    "dToExp": 166
   },
   {
     "id": "OPP70",
@@ -357,7 +473,11 @@
     "st": "Issued Estimate",
     "t": "Factor Bulk Tamarind Paste",
     "ps": null,
-    "psSrc": null
+    "psSrc": null,
+    "expC": "2026-09-07",
+    "actC": null,
+    "dDays": null,
+    "dToExp": 110
   },
   {
     "id": "OPP68",
@@ -369,7 +489,11 @@
     "st": "Issued Estimate",
     "t": "New Product- .75oz parm cheese",
     "ps": null,
-    "psSrc": null
+    "psSrc": null,
+    "expC": "2026-07-31",
+    "actC": null,
+    "dDays": null,
+    "dToExp": 72
   },
   {
     "id": "OPP66",
@@ -381,7 +505,11 @@
     "st": "In Progress",
     "t": "New Product- Hello Fresh Vegan Sour Cream",
     "ps": null,
-    "psSrc": null
+    "psSrc": null,
+    "expC": "2026-10-06",
+    "actC": null,
+    "dDays": null,
+    "dToExp": 139
   },
   {
     "id": "OPP64",
@@ -393,7 +521,11 @@
     "st": "In Progress",
     "t": "A-sha Black Garlic Oil, 1 oz",
     "ps": null,
-    "psSrc": null
+    "psSrc": null,
+    "expC": "2026-08-31",
+    "actC": null,
+    "dDays": null,
+    "dToExp": 103
   },
   {
     "id": "OPP58",
@@ -405,7 +537,11 @@
     "st": "In Progress",
     "t": "A-sha Chili Crisp Bulk",
     "ps": null,
-    "psSrc": null
+    "psSrc": null,
+    "expC": "2026-07-06",
+    "actC": null,
+    "dDays": null,
+    "dToExp": 47
   },
   {
     "id": "OPP56",
@@ -417,7 +553,11 @@
     "st": "In Progress",
     "t": "Truffle Honey Packs",
     "ps": null,
-    "psSrc": null
+    "psSrc": null,
+    "expC": "2026-06-01",
+    "actC": null,
+    "dDays": null,
+    "dToExp": 12
   },
   {
     "id": "OPP53",
@@ -429,7 +569,11 @@
     "st": "In Progress",
     "t": "More Than Gourmet Concentrate, 2oz",
     "ps": null,
-    "psSrc": null
+    "psSrc": null,
+    "expC": "2026-06-01",
+    "actC": null,
+    "dDays": null,
+    "dToExp": 12
   },
   {
     "id": "OPP41",
@@ -441,7 +585,11 @@
     "st": "In Progress",
     "t": "MP Branded Airport condiments",
     "ps": null,
-    "psSrc": null
+    "psSrc": null,
+    "expC": "2026-05-01",
+    "actC": null,
+    "dDays": null,
+    "dToExp": -19
   },
   {
     "id": "OPP30",
@@ -453,7 +601,11 @@
     "st": "In Progress",
     "t": "Little Spoon Ranch",
     "ps": null,
-    "psSrc": null
+    "psSrc": null,
+    "expC": "2026-05-04",
+    "actC": null,
+    "dDays": null,
+    "dToExp": -16
   },
   {
     "id": "OPP20",
@@ -465,6 +617,10 @@
     "st": "In Progress",
     "t": "626 Food Group frozen meal kitting (Noodles, Pork Tankatsu, Black Garic Oil)",
     "ps": null,
-    "psSrc": null
+    "psSrc": null,
+    "expC": "2026-04-01",
+    "actC": null,
+    "dDays": null,
+    "dToExp": -49
   }
 ]
