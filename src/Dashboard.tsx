@@ -1117,20 +1117,26 @@ function NewItems({ yr, rows }: { yr: string; rows: NewItemRow[] }) {
 }
 
 function Quarterly() {
-  const rows = QTR_MARGIN.map((r: any) => ({
-    ...r,
-    tot: (r.r1 || 0) + (r.r2 || 0) + (r.r3 || 0) + (r.r4 || 0) + (r.r126 || 0),
-  })).sort((a, b) => b.tot - a.tot);
-  const totalRev = rows.reduce((s, r) => s + r.tot, 0);
+  const rows = QTR_MARGIN.map((r: any) => {
+    const profits = QTR_KEYS.map((mk, i) => {
+      const rev = r[QTR_REV_KEYS[i]] || 0;
+      const gm = r[mk] || 0;
+      return Math.round(rev * gm) / 100;
+    });
+    const [p1, p2, p3, p4, p126] = profits;
+    return { ...r, p1, p2, p3, p4, p126, totProfit: p1 + p2 + p3 + p4 + p126 };
+  }).sort((a, b) => b.totProfit - a.totProfit);
+  const totalProfit = rows.reduce((s, r) => s + r.totProfit, 0);
+  const PROFIT_KEYS = ["p1", "p2", "p3", "p4", "p126"] as const;
   return (
     <div>
-      <Sec sub={`All ${rows.length} SKUs with revenue Q1'25 through YTD Apr'26 · sorted by total revenue`}>
-        Quarterly Margin Review
+      <Sec sub={`All ${rows.length} SKUs with revenue Q1'25 through YTD Apr'26 · sorted by total gross profit (greatest to lowest)`}>
+        Quarterly Profitability Review
       </Sec>
       <div style={{ display: "flex", gap: 16, flexWrap: "wrap", marginBottom: 16 }}>
         <KPI label="SKUs" value={String(rows.length)} sub="With revenue in window" />
-        <KPI label="Total Revenue" value={fmt(totalRev)} sub="5-quarter sum" />
-        <KPI label="Top 10 share" value={pc((rows.slice(0, 10).reduce((s, r) => s + r.tot, 0) / totalRev) * 100)} sub="of total revenue" />
+        <KPI label="Total Gross Profit" value={fmt(totalProfit)} sub="5-quarter sum" />
+        <KPI label="Top 10 share" value={pc((rows.slice(0, 10).reduce((s, r) => s + r.totProfit, 0) / totalProfit) * 100)} sub="of total gross profit" />
       </div>
       <Cd>
         <div style={{ overflowX: "auto" }}>
@@ -1138,26 +1144,26 @@ function Quarterly() {
             <thead>
               <tr>
                 <TH left>SKU</TH>
-                <TH>Total Rev</TH>
+                <TH>Total GP</TH>
                 <TH>Trend</TH>
                 {QTRS.map((q) => (
                   <TH key={q}>{q} GM%</TH>
                 ))}
                 {QTRS.map((q) => (
-                  <TH key={q + "r"}>{q} Rev</TH>
+                  <TH key={q + "p"}>{q} GP $</TH>
                 ))}
               </tr>
             </thead>
             <tbody>
               {rows.map((row: any) => {
-                const series = QTR_REV_KEYS.map((k) => row[k] || 0);
-                const first = series.find((v) => v > 0) || 0;
-                const last = [...series].reverse().find((v) => v > 0) || 0;
+                const series = PROFIT_KEYS.map((k) => row[k] || 0);
+                const first = series.find((v) => v !== 0) || 0;
+                const last = [...series].reverse().find((v) => v !== 0) || 0;
                 const trendUp = last >= first;
                 return (
                   <tr key={row.s}>
                     <TD left bold>{row.s}</TD>
-                    <TD bold>{ff(row.tot)}</TD>
+                    <TD bold color={row.totProfit < 0 ? C.rd : C.tx}>{ff(row.totProfit)}</TD>
                     <td style={{ padding: "8px 6px", borderBottom: "1px solid " + C.bd, textAlign: "center" }}>
                       <div style={{ display: "inline-block", verticalAlign: "middle" }}>
                         <Spark data={series} color={trendUp ? C.gn : C.rd} />
@@ -1171,8 +1177,10 @@ function Quarterly() {
                         {row[k] === 0 ? "—" : pc(row[k])}
                       </TD>
                     ))}
-                    {QTR_REV_KEYS.map((k) => (
-                      <TD key={k}>{row[k] === 0 ? "—" : ff(row[k])}</TD>
+                    {PROFIT_KEYS.map((k) => (
+                      <TD key={k} color={row[k] === 0 ? C.mt : row[k] < 0 ? C.rd : C.tx}>
+                        {row[k] === 0 ? "—" : ff(row[k])}
+                      </TD>
                     ))}
                   </tr>
                 );
@@ -1415,7 +1423,7 @@ function ARDays({
 }
 
 function Opportunities() {
-  const all = OPPS as Array<{ id: string; d: string; c: string; a: number; stage: string; p: number; st: string; t: string; ps: number | null }>;
+  const all = OPPS as Array<{ id: string; d: string; c: string; a: number; stage: string; p: number; st: string; t: string; ps: number | null; psSrc: string | null }>;
   const open = all.filter((o) => o.st === "In Progress" || o.st === "Issued Estimate");
   const won = all.filter((o) => o.st === "Closed Won");
   const openValue = open.reduce((s, o) => s + o.a, 0);
@@ -1535,6 +1543,9 @@ function Opportunities() {
                     <TD>{ff((o.a * o.p) / 100)}</TD>
                     <TD color={o.ps === null ? C.mt : o.ps > 0 ? C.gn : C.tx}>
                       {o.ps === null ? "—" : o.ps === 0 ? "$0" : ff(o.ps)}
+                      {o.psSrc === "title" && (
+                        <span title="Title-matched (no structural SKU on the opp)" style={{ marginLeft: 4, color: C.am, fontSize: 11 }}>~</span>
+                      )}
                     </TD>
                   </tr>
                 ))}
@@ -1542,7 +1553,11 @@ function Opportunities() {
             </table>
           </div>
           <div style={{ marginTop: 12, fontSize: 12, color: C.mt }}>
-            "YTD'26 Sales" sums invoiced revenue Jan–Apr 2026 across the SKU(s) linked to each opportunity. <strong style={{ color: C.tx }}>"—"</strong> means the opp was created against the generic <em>Quoted Item</em> / <em>Bulk Procurement</em> placeholder in NetSuite, so there's no real SKU to match against.
+            "YTD'26 Sales" sums invoiced revenue Jan–Apr 2026 across the SKU(s) linked to each opportunity.
+            <strong style={{ color: C.tx }}> "—"</strong> means the opp was created against the generic
+            <em> Quoted Item</em> / <em>Bulk Procurement</em> placeholder in NetSuite, so there's no SKU to match.
+            <strong style={{ color: C.am }}> "~"</strong> marks rows where the SKU was inferred from the opp title rather than linked
+            on the transaction (e.g. "Greek Dressing 1.5oz" → FG- Greek Vinaigrette 1.5oz).
           </div>
         </Cd>
       </div>
