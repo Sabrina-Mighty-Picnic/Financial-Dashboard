@@ -30,6 +30,7 @@ import QTR_MARGIN from "./data/quarterlyMargin.json";
 import AR_AGING from "./data/arAging.json";
 import META from "./data/meta.json";
 import NEW_ITEM_ESTIMATES from "./data/newItemEstimates.json";
+import OPPS from "./data/opportunities.json";
 
 const C = {
   bg: "#faf8f5",
@@ -256,7 +257,30 @@ const TABS = [
   "Inventory",
   "Open Sales Orders",
   "AR Days",
+  "Opportunities",
 ] as const;
+
+function Spark({ data, w = 90, h = 26, color = C.ac }: { data: number[]; w?: number; h?: number; color?: string }) {
+  const max = Math.max(...data, 1);
+  const min = Math.min(...data, 0);
+  const range = max - min || 1;
+  const stepX = data.length > 1 ? w / (data.length - 1) : 0;
+  const pts = data
+    .map((v, i) => `${(i * stepX).toFixed(1)},${(h - ((v - min) / range) * h).toFixed(1)}`)
+    .join(" ");
+  const last = data[data.length - 1];
+  const lastX = (data.length - 1) * stepX;
+  const lastY = h - ((last - min) / range) * h;
+  return (
+    <svg width={w} height={h} style={{ display: "block" }}>
+      <polyline points={pts} fill="none" stroke={color} strokeWidth={1.5} />
+      {data.map((v, i) => (
+        <circle key={i} cx={(i * stepX).toFixed(1)} cy={(h - ((v - min) / range) * h).toFixed(1)} r={v === 0 ? 0 : 1.5} fill={color} opacity={0.6} />
+      ))}
+      <circle cx={lastX.toFixed(1)} cy={lastY.toFixed(1)} r={2.2} fill={color} />
+    </svg>
+  );
+}
 
 const normalizeSku = (s: string): string =>
   s
@@ -266,7 +290,7 @@ const normalizeSku = (s: string): string =>
     .replace(/\s+/g, " ")
     .trim();
 
-const QTRS = ["Q1'25", "Q2'25", "Q3'25", "Q4'25", "Q1'26"];
+const QTRS = ["Q1'25", "Q2'25", "Q3'25", "Q4'25", "YTD'26"];
 const QTR_KEYS = ["q1", "q2", "q3", "q4", "q126"] as const;
 const QTR_REV_KEYS = ["r1", "r2", "r3", "r4", "r126"] as const;
 
@@ -597,6 +621,7 @@ export default function Dashboard() {
           <OpenSO total={soTotal} count={soCount} byCustomer={soByCustomer} orders={SO_PIPELINE} />
         )}
         {tab === "AR Days" && <ARDays monthly={arMonthly} aging={AR_AGING} />}
+        {tab === "Opportunities" && <Opportunities />}
       </div>
     </div>
   );
@@ -1092,15 +1117,29 @@ function NewItems({ yr, rows }: { yr: string; rows: NewItemRow[] }) {
 }
 
 function Quarterly() {
+  const rows = QTR_MARGIN.map((r: any) => ({
+    ...r,
+    tot: (r.r1 || 0) + (r.r2 || 0) + (r.r3 || 0) + (r.r4 || 0) + (r.r126 || 0),
+  })).sort((a, b) => b.tot - a.tot);
+  const totalRev = rows.reduce((s, r) => s + r.tot, 0);
   return (
     <div>
-      <Sec sub="Gross margin and revenue by SKU across recent quarters">Quarterly Margin Review</Sec>
+      <Sec sub={`All ${rows.length} SKUs with revenue Q1'25 through YTD Apr'26 · sorted by total revenue`}>
+        Quarterly Margin Review
+      </Sec>
+      <div style={{ display: "flex", gap: 16, flexWrap: "wrap", marginBottom: 16 }}>
+        <KPI label="SKUs" value={String(rows.length)} sub="With revenue in window" />
+        <KPI label="Total Revenue" value={fmt(totalRev)} sub="5-quarter sum" />
+        <KPI label="Top 10 share" value={pc((rows.slice(0, 10).reduce((s, r) => s + r.tot, 0) / totalRev) * 100)} sub="of total revenue" />
+      </div>
       <Cd>
         <div style={{ overflowX: "auto" }}>
-          <table style={{ width: "100%", borderCollapse: "collapse", minWidth: 880 }}>
+          <table style={{ width: "100%", borderCollapse: "collapse", minWidth: 1080 }}>
             <thead>
               <tr>
                 <TH left>SKU</TH>
+                <TH>Total Rev</TH>
+                <TH>Trend</TH>
                 {QTRS.map((q) => (
                   <TH key={q}>{q} GM%</TH>
                 ))}
@@ -1110,24 +1149,34 @@ function Quarterly() {
               </tr>
             </thead>
             <tbody>
-              {QTR_MARGIN.map((row: any) => (
-                <tr key={row.s}>
-                  <TD left bold>
-                    {row.s}
-                  </TD>
-                  {QTR_KEYS.map((k) => (
-                    <TD
-                      key={k}
-                      color={row[k] === 0 ? C.mt : row[k] >= 30 ? C.gn : row[k] >= 20 ? C.am : C.rd}
-                    >
-                      {row[k] === 0 ? "—" : pc(row[k])}
-                    </TD>
-                  ))}
-                  {QTR_REV_KEYS.map((k) => (
-                    <TD key={k}>{row[k] === 0 ? "—" : ff(row[k])}</TD>
-                  ))}
-                </tr>
-              ))}
+              {rows.map((row: any) => {
+                const series = QTR_REV_KEYS.map((k) => row[k] || 0);
+                const first = series.find((v) => v > 0) || 0;
+                const last = [...series].reverse().find((v) => v > 0) || 0;
+                const trendUp = last >= first;
+                return (
+                  <tr key={row.s}>
+                    <TD left bold>{row.s}</TD>
+                    <TD bold>{ff(row.tot)}</TD>
+                    <td style={{ padding: "8px 6px", borderBottom: "1px solid " + C.bd, textAlign: "center" }}>
+                      <div style={{ display: "inline-block", verticalAlign: "middle" }}>
+                        <Spark data={series} color={trendUp ? C.gn : C.rd} />
+                      </div>
+                    </td>
+                    {QTR_KEYS.map((k) => (
+                      <TD
+                        key={k}
+                        color={row[k] === 0 ? C.mt : row[k] >= 30 ? C.gn : row[k] >= 20 ? C.am : C.rd}
+                      >
+                        {row[k] === 0 ? "—" : pc(row[k])}
+                      </TD>
+                    ))}
+                    {QTR_REV_KEYS.map((k) => (
+                      <TD key={k}>{row[k] === 0 ? "—" : ff(row[k])}</TD>
+                    ))}
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
         </div>
@@ -1361,6 +1410,136 @@ function ARDays({
           </tbody>
         </table>
       </Cd>
+    </div>
+  );
+}
+
+function Opportunities() {
+  const all = OPPS as Array<{ id: string; d: string; c: string; a: number; stage: string; p: number; st: string; t: string }>;
+  const open = all.filter((o) => o.st === "In Progress" || o.st === "Issued Estimate");
+  const won = all.filter((o) => o.st === "Closed Won");
+  const lost = all.filter((o) => o.st === "Closed Lost");
+  const openValue = open.reduce((s, o) => s + o.a, 0);
+  const weighted = open.reduce((s, o) => s + (o.a * o.p) / 100, 0);
+  const wonValue = won.reduce((s, o) => s + o.a, 0);
+  const winRate = won.length + lost.length > 0 ? (won.length / (won.length + lost.length)) * 100 : 0;
+
+  const STAGE_ORDER = ["In Discussion", "Identified Decision Makers", "Proposal", "In Negotiation", "Purchasing", "Closed Won", "Closed Lost"];
+  const STAGE_COLOR: Record<string, string> = {
+    "In Discussion": C.cy,
+    "Identified Decision Makers": C.pr,
+    "Proposal": C.am,
+    "In Negotiation": C.ac,
+    "Purchasing": C.gn,
+    "Closed Won": C.gn,
+    "Closed Lost": C.rd,
+  };
+  const openByStage = STAGE_ORDER.filter((s) => s !== "Closed Won" && s !== "Closed Lost")
+    .map((stage) => {
+      const list = open.filter((o) => o.stage === stage);
+      return { stage, count: list.length, value: list.reduce((s, o) => s + o.a, 0) };
+    })
+    .filter((r) => r.count > 0);
+
+  const openByCust = Object.values(
+    open.reduce((acc: Record<string, { c: string; n: number; v: number }>, o) => {
+      acc[o.c] = acc[o.c] || { c: o.c, n: 0, v: 0 };
+      acc[o.c].n += 1;
+      acc[o.c].v += o.a;
+      return acc;
+    }, {}),
+  ).sort((a, b) => b.v - a.v);
+
+  return (
+    <div>
+      <Sec sub={`${all.length} total opportunities in NetSuite · ${open.length} open · ${won.length} won · ${lost.length} lost`}>
+        Sales Pipeline
+      </Sec>
+      <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
+        <KPI label="Open Pipeline" value={fmt(openValue)} sub={`${open.length} opportunities`} />
+        <KPI label="Weighted Pipeline" value={fmt(weighted)} sub="By stage probability" />
+        <KPI label="Closed Won" value={fmt(wonValue)} sub={`${won.length} opportunities`} />
+        <KPI label="Win Rate" value={pc(winRate)} sub={`${won.length} of ${won.length + lost.length} closed`} up={winRate >= 20} />
+      </div>
+
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, marginTop: 24 }}>
+        <Cd title="Open pipeline by stage">
+          <div style={{ width: "100%", height: 260 }}>
+            <ResponsiveContainer>
+              <BarChart data={openByStage} layout="vertical" margin={{ left: 60 }}>
+                <CartesianGrid stroke={C.bd} strokeDasharray="3 3" />
+                <XAxis type="number" stroke={C.mt} fontSize={11} tickFormatter={(v) => fmt(v)} />
+                <YAxis type="category" dataKey="stage" stroke={C.mt} fontSize={11} width={140} />
+                <Tooltip content={<TT />} />
+                <Bar dataKey="value" name="Pipeline value" radius={[0, 4, 4, 0]}>
+                  {openByStage.map((d, i) => (
+                    <Cell key={i} fill={STAGE_COLOR[d.stage] || C.ac} />
+                  ))}
+                </Bar>
+              </BarChart>
+            </ResponsiveContainer>
+          </div>
+        </Cd>
+        <Cd title="Open pipeline by customer">
+          <div style={{ overflowY: "auto", maxHeight: 260 }}>
+            <table style={{ width: "100%", borderCollapse: "collapse" }}>
+              <thead>
+                <tr>
+                  <TH left>Customer</TH>
+                  <TH>#</TH>
+                  <TH>Value</TH>
+                </tr>
+              </thead>
+              <tbody>
+                {openByCust.map((r) => (
+                  <tr key={r.c}>
+                    <TD left bold>{r.c}</TD>
+                    <TD>{r.n}</TD>
+                    <TD>{ff(r.v)}</TD>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </Cd>
+      </div>
+
+      <div style={{ marginTop: 24 }}>
+        <Cd title="All opportunities (sorted by value)">
+          <div style={{ overflowX: "auto" }}>
+            <table style={{ width: "100%", borderCollapse: "collapse", minWidth: 920 }}>
+              <thead>
+                <tr>
+                  <TH left>Opp</TH>
+                  <TH left>Customer</TH>
+                  <TH left>Title</TH>
+                  <TH>Date</TH>
+                  <TH>Stage</TH>
+                  <TH>Prob</TH>
+                  <TH>Amount</TH>
+                  <TH>Weighted</TH>
+                </tr>
+              </thead>
+              <tbody>
+                {all.map((o) => (
+                  <tr key={o.id}>
+                    <TD left bold>{o.id}</TD>
+                    <TD left>{o.c}</TD>
+                    <TD left>
+                      <span style={{ fontSize: 12, color: C.mt }}>{o.t}</span>
+                    </TD>
+                    <TD>{o.d}</TD>
+                    <TD color={STAGE_COLOR[o.stage] || C.tx}>{o.stage}</TD>
+                    <TD>{o.p}%</TD>
+                    <TD>{ff(o.a)}</TD>
+                    <TD>{ff((o.a * o.p) / 100)}</TD>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </Cd>
+      </div>
     </div>
   );
 }
