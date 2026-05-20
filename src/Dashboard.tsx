@@ -1027,6 +1027,7 @@ function NewItems({ yr, rows }: { yr: string; rows: NewItemRow[] }) {
             <tbody>
               {rows
                 .slice()
+                .filter((r) => r.gp !== null)
                 .sort((a, b) => (b.gp ?? -1) - (a.gp ?? -1))
                 .map((r) => {
                   const dCost =
@@ -1117,20 +1118,26 @@ function NewItems({ yr, rows }: { yr: string; rows: NewItemRow[] }) {
 }
 
 function Quarterly() {
-  const rows = QTR_MARGIN.map((r: any) => ({
-    ...r,
-    tot: (r.r1 || 0) + (r.r2 || 0) + (r.r3 || 0) + (r.r4 || 0) + (r.r126 || 0),
-  })).sort((a, b) => b.tot - a.tot);
-  const totalRev = rows.reduce((s, r) => s + r.tot, 0);
+  const rows = QTR_MARGIN.map((r: any) => {
+    const profits = QTR_KEYS.map((mk, i) => {
+      const rev = r[QTR_REV_KEYS[i]] || 0;
+      const gm = r[mk] || 0;
+      return Math.round(rev * gm) / 100;
+    });
+    const [p1, p2, p3, p4, p126] = profits;
+    return { ...r, p1, p2, p3, p4, p126, totProfit: p1 + p2 + p3 + p4 + p126 };
+  }).sort((a, b) => b.totProfit - a.totProfit);
+  const totalProfit = rows.reduce((s, r) => s + r.totProfit, 0);
+  const PROFIT_KEYS = ["p1", "p2", "p3", "p4", "p126"] as const;
   return (
     <div>
-      <Sec sub={`All ${rows.length} SKUs with revenue Q1'25 through YTD Apr'26 · sorted by total revenue`}>
-        Quarterly Margin Review
+      <Sec sub={`All ${rows.length} SKUs with revenue Q1'25 through YTD Apr'26 · sorted by total gross profit (greatest to lowest)`}>
+        Quarterly Profitability Review
       </Sec>
       <div style={{ display: "flex", gap: 16, flexWrap: "wrap", marginBottom: 16 }}>
         <KPI label="SKUs" value={String(rows.length)} sub="With revenue in window" />
-        <KPI label="Total Revenue" value={fmt(totalRev)} sub="5-quarter sum" />
-        <KPI label="Top 10 share" value={pc((rows.slice(0, 10).reduce((s, r) => s + r.tot, 0) / totalRev) * 100)} sub="of total revenue" />
+        <KPI label="Total Gross Profit" value={fmt(totalProfit)} sub="5-quarter sum" />
+        <KPI label="Top 10 share" value={pc((rows.slice(0, 10).reduce((s, r) => s + r.totProfit, 0) / totalProfit) * 100)} sub="of total gross profit" />
       </div>
       <Cd>
         <div style={{ overflowX: "auto" }}>
@@ -1138,26 +1145,26 @@ function Quarterly() {
             <thead>
               <tr>
                 <TH left>SKU</TH>
-                <TH>Total Rev</TH>
+                <TH>Total GP</TH>
                 <TH>Trend</TH>
                 {QTRS.map((q) => (
                   <TH key={q}>{q} GM%</TH>
                 ))}
                 {QTRS.map((q) => (
-                  <TH key={q + "r"}>{q} Rev</TH>
+                  <TH key={q + "p"}>{q} GP $</TH>
                 ))}
               </tr>
             </thead>
             <tbody>
               {rows.map((row: any) => {
-                const series = QTR_REV_KEYS.map((k) => row[k] || 0);
-                const first = series.find((v) => v > 0) || 0;
-                const last = [...series].reverse().find((v) => v > 0) || 0;
+                const series = PROFIT_KEYS.map((k) => row[k] || 0);
+                const first = series.find((v) => v !== 0) || 0;
+                const last = [...series].reverse().find((v) => v !== 0) || 0;
                 const trendUp = last >= first;
                 return (
                   <tr key={row.s}>
                     <TD left bold>{row.s}</TD>
-                    <TD bold>{ff(row.tot)}</TD>
+                    <TD bold color={row.totProfit < 0 ? C.rd : C.tx}>{ff(row.totProfit)}</TD>
                     <td style={{ padding: "8px 6px", borderBottom: "1px solid " + C.bd, textAlign: "center" }}>
                       <div style={{ display: "inline-block", verticalAlign: "middle" }}>
                         <Spark data={series} color={trendUp ? C.gn : C.rd} />
@@ -1171,8 +1178,10 @@ function Quarterly() {
                         {row[k] === 0 ? "—" : pc(row[k])}
                       </TD>
                     ))}
-                    {QTR_REV_KEYS.map((k) => (
-                      <TD key={k}>{row[k] === 0 ? "—" : ff(row[k])}</TD>
+                    {PROFIT_KEYS.map((k) => (
+                      <TD key={k} color={row[k] === 0 ? C.mt : row[k] < 0 ? C.rd : C.tx}>
+                        {row[k] === 0 ? "—" : ff(row[k])}
+                      </TD>
                     ))}
                   </tr>
                 );
@@ -1415,16 +1424,16 @@ function ARDays({
 }
 
 function Opportunities() {
-  const all = OPPS as Array<{ id: string; d: string; c: string; a: number; stage: string; p: number; st: string; t: string }>;
+  const all = OPPS as Array<{ id: string; d: string; c: string; a: number; stage: string; p: number; st: string; t: string; ps: number | null; psSrc: string | null }>;
   const open = all.filter((o) => o.st === "In Progress" || o.st === "Issued Estimate");
   const won = all.filter((o) => o.st === "Closed Won");
-  const lost = all.filter((o) => o.st === "Closed Lost");
   const openValue = open.reduce((s, o) => s + o.a, 0);
   const weighted = open.reduce((s, o) => s + (o.a * o.p) / 100, 0);
   const wonValue = won.reduce((s, o) => s + o.a, 0);
-  const winRate = won.length + lost.length > 0 ? (won.length / (won.length + lost.length)) * 100 : 0;
+  const ytdLinked = all.reduce((s, o) => s + (o.ps || 0), 0);
+  const taggedCount = all.filter((o) => o.ps !== null).length;
 
-  const STAGE_ORDER = ["In Discussion", "Identified Decision Makers", "Proposal", "In Negotiation", "Purchasing", "Closed Won", "Closed Lost"];
+  const STAGE_ORDER = ["In Discussion", "Identified Decision Makers", "Proposal", "In Negotiation", "Purchasing", "Closed Won"];
   const STAGE_COLOR: Record<string, string> = {
     "In Discussion": C.cy,
     "Identified Decision Makers": C.pr,
@@ -1432,9 +1441,8 @@ function Opportunities() {
     "In Negotiation": C.ac,
     "Purchasing": C.gn,
     "Closed Won": C.gn,
-    "Closed Lost": C.rd,
   };
-  const openByStage = STAGE_ORDER.filter((s) => s !== "Closed Won" && s !== "Closed Lost")
+  const openByStage = STAGE_ORDER.filter((s) => s !== "Closed Won")
     .map((stage) => {
       const list = open.filter((o) => o.stage === stage);
       return { stage, count: list.length, value: list.reduce((s, o) => s + o.a, 0) };
@@ -1452,14 +1460,14 @@ function Opportunities() {
 
   return (
     <div>
-      <Sec sub={`${all.length} total opportunities in NetSuite · ${open.length} open · ${won.length} won · ${lost.length} lost`}>
+      <Sec sub={`${all.length} active opportunities · ${open.length} open · ${won.length} won · Closed Lost hidden`}>
         Sales Pipeline
       </Sec>
       <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
         <KPI label="Open Pipeline" value={fmt(openValue)} sub={`${open.length} opportunities`} />
         <KPI label="Weighted Pipeline" value={fmt(weighted)} sub="By stage probability" />
         <KPI label="Closed Won" value={fmt(wonValue)} sub={`${won.length} opportunities`} />
-        <KPI label="Win Rate" value={pc(winRate)} sub={`${won.length} of ${won.length + lost.length} closed`} up={winRate >= 20} />
+        <KPI label="YTD Sales (linked items)" value={fmt(ytdLinked)} sub={`From ${taggedCount} opps with SKU tagged`} />
       </div>
 
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, marginTop: 24 }}>
@@ -1505,9 +1513,9 @@ function Opportunities() {
       </div>
 
       <div style={{ marginTop: 24 }}>
-        <Cd title="All opportunities (sorted by value)">
+        <Cd title="Open & won opportunities (sorted by value)">
           <div style={{ overflowX: "auto" }}>
-            <table style={{ width: "100%", borderCollapse: "collapse", minWidth: 920 }}>
+            <table style={{ width: "100%", borderCollapse: "collapse", minWidth: 1040 }}>
               <thead>
                 <tr>
                   <TH left>Opp</TH>
@@ -1518,6 +1526,7 @@ function Opportunities() {
                   <TH>Prob</TH>
                   <TH>Amount</TH>
                   <TH>Weighted</TH>
+                  <TH>YTD'26 Sales</TH>
                 </tr>
               </thead>
               <tbody>
@@ -1533,10 +1542,23 @@ function Opportunities() {
                     <TD>{o.p}%</TD>
                     <TD>{ff(o.a)}</TD>
                     <TD>{ff((o.a * o.p) / 100)}</TD>
+                    <TD color={o.ps === null ? C.mt : o.ps > 0 ? C.gn : C.tx}>
+                      {o.ps === null ? "—" : o.ps === 0 ? "$0" : ff(o.ps)}
+                      {o.psSrc === "title" && (
+                        <span title="Title-matched (no structural SKU on the opp)" style={{ marginLeft: 4, color: C.am, fontSize: 11 }}>~</span>
+                      )}
+                    </TD>
                   </tr>
                 ))}
               </tbody>
             </table>
+          </div>
+          <div style={{ marginTop: 12, fontSize: 12, color: C.mt }}>
+            "YTD'26 Sales" sums invoiced revenue Jan–Apr 2026 across the SKU(s) linked to each opportunity.
+            <strong style={{ color: C.tx }}> "—"</strong> means the opp was created against the generic
+            <em> Quoted Item</em> / <em>Bulk Procurement</em> placeholder in NetSuite, so there's no SKU to match.
+            <strong style={{ color: C.am }}> "~"</strong> marks rows where the SKU was inferred from the opp title rather than linked
+            on the transaction (e.g. "Greek Dressing 1.5oz" → FG- Greek Vinaigrette 1.5oz).
           </div>
         </Cd>
       </div>

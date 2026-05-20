@@ -1,74 +1,326 @@
 [
-  { "n": "TJS Orange Marmalade 1oz", "d": "2024-01-02" },
-  { "n": "TJS Raspberry Jalap. 1oz", "d": "2024-01-02" },
-  { "n": "BA Peanut Butter .7oz", "d": "2024-01-02" },
-  { "n": "TJS Honey .5oz", "d": "2024-01-02" },
-  { "n": "TJS Friends Strawberry 10oz", "d": "2024-01-15" },
-  { "n": "TJS Blueberry Bourbon 10oz", "d": "2024-01-16" },
-  { "n": "TJS Drunken Monkey 10oz", "d": "2024-01-16" },
-  { "n": "TJS Raspberry Jalap. 10oz", "d": "2024-01-16" },
-  { "n": "TJS Sweet Wino Onion 10oz", "d": "2024-01-16" },
-  { "n": "TJS Fig Tamarind 10oz", "d": "2024-01-17" },
-  { "n": "TJS Rethink Strawberry 10oz", "d": "2024-01-18" },
-  { "n": "Peanut Butter 1.15oz", "d": "2024-01-18" },
-  { "n": "HF Cherry 1oz", "d": "2024-01-23" },
-  { "n": "HF Apricot 1oz", "d": "2024-01-25" },
-  { "n": "HF Cranberry 1oz", "d": "2024-01-25" },
-  { "n": "HF Peach 1oz", "d": "2024-01-25" },
-  { "n": "HF Red Pepper 1oz", "d": "2024-01-26" },
-  { "n": "TJS Orange Marmalade 10oz", "d": "2024-01-31" },
-  { "n": "TJS Blueberry Bourbon 1oz", "d": "2024-01-31" },
-  { "n": "Sesame Oil .5oz", "d": "2024-02-01" },
-  { "n": "Apple Cider Vinegar .5oz", "d": "2024-02-01" },
-  { "n": "HF Plum 1oz", "d": "2024-02-13" },
-  { "n": "Rice Vinegar .5oz", "d": "2024-02-14" },
-  { "n": "Tamari Soy .33oz (Arch)", "d": "2024-02-14" },
-  { "n": "BA Mirin .5oz", "d": "2024-03-26" },
-  { "n": "BA Black Vinegar .5oz", "d": "2024-03-26" },
-  { "n": "BA Ponzu .5oz", "d": "2024-03-26" },
-  { "n": "Tamari Soy .33oz", "d": "2024-03-28" },
-  { "n": "BA Soy Sauce .5oz", "d": "2024-04-09" },
-  { "n": "BA Worcestershire 1oz", "d": "2024-04-09" },
-  { "n": "BA Soy Sauce 1oz", "d": "2024-04-09" },
-  { "n": "HF Fig 1oz", "d": "2024-04-12" },
-  { "n": "BA Peanut Butter Spread .7oz", "d": "2024-05-03" },
-  { "n": "BA Hoisin 1.38oz", "d": "2024-05-17" },
-  { "n": "BA Rice Vinegar .5oz", "d": "2024-07-23" },
-  { "n": "Maple Syrup 1oz", "d": "2024-09-17" },
-  { "n": "BA Preserved Lemon 6g", "d": "2024-09-25" },
-  { "n": "Agave Syrup .5oz", "d": "2024-10-21" },
-  { "n": "TJS Strawberry Jalap. 1oz", "d": "2024-10-28" },
-  { "n": "BA Pomegranate .5oz", "d": "2024-10-30" },
-  { "n": "Worcestershire 1oz", "d": "2024-10-30" },
-  { "n": "RD Blueberry Vanilla 10oz", "d": "2024-11-22" },
-  { "n": "Jamaican Jerk Sauce 1.5oz", "d": "2025-01-14" },
-  { "n": "BA Peanut Butter (Salted) .7oz", "d": "2025-01-27" },
-  { "n": "BA Blazing Buffalo 2oz", "d": "2025-02-10" },
-  { "n": "HF Honey .5oz", "d": "2025-04-16" },
-  { "n": "HF Peanut Butter 1.15oz", "d": "2025-05-16" },
-  { "n": "CRAIT Apple Cider Vin. .5oz", "d": "2025-06-10" },
-  { "n": "BA Gochujang 10g", "d": "2025-06-17" },
-  { "n": "BA Dijonnaise 18g", "d": "2025-06-17" },
-  { "n": "BA Ketchup 21g", "d": "2025-06-17" },
-  { "n": "BA Red Harissa 21g", "d": "2025-06-17" },
-  { "n": "BA Ketchup 62g", "d": "2025-06-17" },
-  { "n": "BA Hot Sauce 15g", "d": "2025-06-24" },
-  { "n": "BA Black Bean Sauce 56g", "d": "2025-06-24" },
-  { "n": "BA Soy Miso 56g", "d": "2025-07-08" },
-  { "n": "BA Sweet Chili 51g", "d": "2025-08-07" },
-  { "n": "Red Wine Vinegar .5oz", "d": "2025-08-12" },
-  { "n": "BA Sambal 21g", "d": "2025-08-14" },
-  { "n": "BA Chipotle .5oz (9g)", "d": "2025-08-14" },
-  { "n": "HF Maple Syrup 1oz", "d": "2025-09-30" },
-  { "n": "BA Whole Grain Dijon 21g", "d": "2025-10-20" },
-  { "n": "Sherry Wine Vinegar", "d": "2025-11-18" },
-  { "n": "BA Dijon Mustard 21g", "d": "2025-12-22" },
-  { "n": "Bacon Jam (Uncured) 1oz", "d": "2025-12-26" },
-  { "n": "Fresh Catch Thai-ger Sweet Chili 7oz", "d": "2026-02-12" },
-  { "n": "Parmesan Cheese 1oz (Case of 300)", "d": "2026-03-03" },
-  { "n": "Fish Sauce .5 fl oz (18g)", "d": "2026-04-02" },
-  { "n": "California Sauce (Elote) 1.5oz (42.52g)", "d": "2026-03-27" },
-  { "n": "California Spice (Mexican Street Corn) 5g", "d": "2026-03-27" },
-  { "n": "Greek Vinaigrette 1.5oz (42g)", "d": "2026-04-13" },
-  { "n": "A-Sha Zimm's Peanut Butter Chili Crisp Mild 16oz", "d": "2026-04-13" }
+  {
+    "n": "TJS Orange Marmalade 1oz",
+    "d": "2024-01-02"
+  },
+  {
+    "n": "TJS Raspberry Jalap. 1oz",
+    "d": "2024-01-02"
+  },
+  {
+    "n": "BA Peanut Butter .7oz",
+    "d": "2024-01-02"
+  },
+  {
+    "n": "TJS Honey .5oz",
+    "d": "2024-01-02"
+  },
+  {
+    "n": "TJS Friends Strawberry 10oz",
+    "d": "2024-01-15"
+  },
+  {
+    "n": "TJS Blueberry Bourbon 10oz",
+    "d": "2024-01-16"
+  },
+  {
+    "n": "TJS Drunken Monkey 10oz",
+    "d": "2024-01-16"
+  },
+  {
+    "n": "TJS Raspberry Jalap. 10oz",
+    "d": "2024-01-16"
+  },
+  {
+    "n": "TJS Sweet Wino Onion 10oz",
+    "d": "2024-01-16"
+  },
+  {
+    "n": "TJS Fig Tamarind 10oz",
+    "d": "2024-01-17"
+  },
+  {
+    "n": "TJS Rethink Strawberry 10oz",
+    "d": "2024-01-18"
+  },
+  {
+    "n": "Peanut Butter 1.15oz",
+    "d": "2024-01-18"
+  },
+  {
+    "n": "HF Cherry 1oz",
+    "d": "2024-01-23"
+  },
+  {
+    "n": "HF Apricot 1oz",
+    "d": "2024-01-25"
+  },
+  {
+    "n": "HF Cranberry 1oz",
+    "d": "2024-01-25"
+  },
+  {
+    "n": "HF Peach 1oz",
+    "d": "2024-01-25"
+  },
+  {
+    "n": "HF Red Pepper 1oz",
+    "d": "2024-01-26"
+  },
+  {
+    "n": "TJS Orange Marmalade 10oz",
+    "d": "2024-01-31"
+  },
+  {
+    "n": "TJS Blueberry Bourbon 1oz",
+    "d": "2024-01-31"
+  },
+  {
+    "n": "Sesame Oil .5oz",
+    "d": "2024-02-01"
+  },
+  {
+    "n": "Apple Cider Vinegar .5oz",
+    "d": "2024-02-01"
+  },
+  {
+    "n": "HF Plum 1oz",
+    "d": "2024-02-13"
+  },
+  {
+    "n": "Rice Vinegar .5oz",
+    "d": "2024-02-14"
+  },
+  {
+    "n": "Tamari Soy .33oz (Arch)",
+    "d": "2024-02-14"
+  },
+  {
+    "n": "BA Mirin .5oz",
+    "d": "2024-03-26"
+  },
+  {
+    "n": "BA Black Vinegar .5oz",
+    "d": "2024-03-26"
+  },
+  {
+    "n": "BA Ponzu .5oz",
+    "d": "2024-03-26"
+  },
+  {
+    "n": "Tamari Soy .33oz",
+    "d": "2024-03-28"
+  },
+  {
+    "n": "BA Soy Sauce .5oz",
+    "d": "2024-04-09"
+  },
+  {
+    "n": "BA Worcestershire 1oz",
+    "d": "2024-04-09"
+  },
+  {
+    "n": "BA Soy Sauce 1oz",
+    "d": "2024-04-09"
+  },
+  {
+    "n": "HF Fig 1oz",
+    "d": "2024-04-12"
+  },
+  {
+    "n": "BA Peanut Butter Spread .7oz",
+    "d": "2024-05-03"
+  },
+  {
+    "n": "BA Hoisin 1.38oz",
+    "d": "2024-05-17"
+  },
+  {
+    "n": "BA Rice Vinegar .5oz",
+    "d": "2024-07-23"
+  },
+  {
+    "n": "Maple Syrup 1oz",
+    "d": "2024-09-17"
+  },
+  {
+    "n": "BA Preserved Lemon 6g",
+    "d": "2024-09-25"
+  },
+  {
+    "n": "Agave Syrup .5oz",
+    "d": "2024-10-21"
+  },
+  {
+    "n": "TJS Strawberry Jalap. 1oz",
+    "d": "2024-10-28"
+  },
+  {
+    "n": "BA Pomegranate .5oz",
+    "d": "2024-10-30"
+  },
+  {
+    "n": "Worcestershire 1oz",
+    "d": "2024-10-30"
+  },
+  {
+    "n": "RD Blueberry Vanilla 10oz",
+    "d": "2024-11-22"
+  },
+  {
+    "n": "Jamaican Jerk Sauce 1.5oz",
+    "d": "2025-01-14"
+  },
+  {
+    "n": "GC Apricot 5 gallon pail",
+    "d": "2025-01-17"
+  },
+  {
+    "n": "BA Peanut Butter (Salted) .7oz",
+    "d": "2025-01-27"
+  },
+  {
+    "n": "BA Blazing Buffalo 2oz",
+    "d": "2025-02-10"
+  },
+  {
+    "n": "HF Honey .5oz",
+    "d": "2025-04-16"
+  },
+  {
+    "n": "HF Peanut Butter 1.15oz",
+    "d": "2025-05-16"
+  },
+  {
+    "n": "Dijonnaise (Bulk)",
+    "d": "2025-05-27"
+  },
+  {
+    "n": "CRAIT Apple Cider Vin. .5oz",
+    "d": "2025-06-10"
+  },
+  {
+    "n": "BA Gochujang 10g",
+    "d": "2025-06-17"
+  },
+  {
+    "n": "BA Dijonnaise 18g",
+    "d": "2025-06-17"
+  },
+  {
+    "n": "BA Ketchup 21g",
+    "d": "2025-06-17"
+  },
+  {
+    "n": "BA Red Harissa 21g",
+    "d": "2025-06-17"
+  },
+  {
+    "n": "BA Ketchup 62g",
+    "d": "2025-06-17"
+  },
+  {
+    "n": "Sweet White Miso (Bulk)",
+    "d": "2025-06-19"
+  },
+  {
+    "n": "Avocado Mayo Bulk",
+    "d": "2025-06-19"
+  },
+  {
+    "n": "BA Hot Sauce 15g",
+    "d": "2025-06-24"
+  },
+  {
+    "n": "BA Black Bean Sauce 56g",
+    "d": "2025-06-24"
+  },
+  {
+    "n": "BA Soy Miso 56g",
+    "d": "2025-07-08"
+  },
+  {
+    "n": "BA Sweet Chili 51g",
+    "d": "2025-08-07"
+  },
+  {
+    "n": "Red Wine Vinegar .5oz",
+    "d": "2025-08-12"
+  },
+  {
+    "n": "BA Chipotle .5oz (9g)",
+    "d": "2025-08-14"
+  },
+  {
+    "n": "BA Sambal 21g",
+    "d": "2025-08-14"
+  },
+  {
+    "n": "EP Soy Sauce .33oz",
+    "d": "2025-08-15"
+  },
+  {
+    "n": "Maple Bulk 55# Pail",
+    "d": "2025-08-27"
+  },
+  {
+    "n": "HF Maple Syrup 1oz",
+    "d": "2025-09-30"
+  },
+  {
+    "n": "Maple Syrup Bulk (lb)",
+    "d": "2025-10-02"
+  },
+  {
+    "n": "BA Whole Grain Dijon 21g",
+    "d": "2025-10-20"
+  },
+  {
+    "n": "Dried Plum Puree (Bulk)",
+    "d": "2025-10-27"
+  },
+  {
+    "n": "Sherry Wine Vinegar",
+    "d": "2025-11-18"
+  },
+  {
+    "n": "Ancho Chile Paste (Bulk)",
+    "d": "2025-12-12"
+  },
+  {
+    "n": "BA Dijon Mustard 21g",
+    "d": "2025-12-22"
+  },
+  {
+    "n": "Bacon Jam (Uncured) 1oz",
+    "d": "2025-12-26"
+  },
+  {
+    "n": "Fresh Catch Thai-ger Sweet Chili 7oz",
+    "d": "2026-02-12"
+  },
+  {
+    "n": "Parmesan Cheese 1oz (Case of 300)",
+    "d": "2026-03-03"
+  },
+  {
+    "n": "California Sauce (Elote) 1.5oz (42.52g)",
+    "d": "2026-03-27"
+  },
+  {
+    "n": "California Spice (Mexican Street Corn) 5g",
+    "d": "2026-03-27"
+  },
+  {
+    "n": "Fish Sauce .5 fl oz (18g)",
+    "d": "2026-04-02"
+  },
+  {
+    "n": "Greek Vinaigrette 1.5oz (42g)",
+    "d": "2026-04-13"
+  },
+  {
+    "n": "A-Sha Zimm's Peanut Butter Chili Crisp Mild 16oz",
+    "d": "2026-04-13"
+  }
 ]

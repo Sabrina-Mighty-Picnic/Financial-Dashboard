@@ -1,45 +1,5 @@
 [
   {
-    "id": "OPP19",
-    "d": "10/2/2025",
-    "c": "Nut House CoPacking",
-    "a": 2590680,
-    "stage": "Closed Lost",
-    "p": 0,
-    "st": "Closed Lost",
-    "t": "Nut House, 1.15oz tolling only"
-  },
-  {
-    "id": "OPP28",
-    "d": "10/29/2025",
-    "c": "Quince & Apple",
-    "a": 1114350,
-    "stage": "Closed Lost",
-    "p": 0,
-    "st": "Closed Lost",
-    "t": "Quince & Apple Orange Marmalade, 5oz"
-  },
-  {
-    "id": "OPP57",
-    "d": "2/25/2026",
-    "c": "Factor75",
-    "a": 960000,
-    "stage": "Closed Lost",
-    "p": 0,
-    "st": "Closed Lost",
-    "t": "Factor Chili Crunch, .75oz"
-  },
-  {
-    "id": "OPP6",
-    "d": "9/4/2025",
-    "c": "Hello Fresh",
-    "a": 780000,
-    "stage": "Closed Lost",
-    "p": 0,
-    "st": "Closed Lost",
-    "t": "Coconut Milk, 150ml"
-  },
-  {
     "id": "OPP23",
     "d": "10/14/2025",
     "c": "A-Sha Foods",
@@ -47,17 +7,9 @@
     "stage": "Closed Won",
     "p": 100,
     "st": "Closed Won",
-    "t": "Asha Peanut Butter, 16oz"
-  },
-  {
-    "id": "OPP18",
-    "d": "9/25/2025",
-    "c": "Feast Food Enterprises, LLC",
-    "a": 288004.47,
-    "stage": "Closed Lost",
-    "p": 0,
-    "st": "Closed Lost",
-    "t": "Procurement (9/25/25)"
+    "t": "Asha Peanut Butter, 16oz",
+    "ps": 49635.24,
+    "psSrc": "linked"
   },
   {
     "id": "OPP8",
@@ -67,7 +19,9 @@
     "stage": "Closed Won",
     "p": 100,
     "st": "Closed Won",
-    "t": "Great Eastern Seafood/Stop and Shop, 7oz marinades"
+    "t": "Great Eastern Seafood/Stop and Shop, 7oz marinades",
+    "ps": 85425,
+    "psSrc": "linked"
   },
   {
     "id": "OPP13",
@@ -77,7 +31,9 @@
     "stage": "Closed Won",
     "p": 100,
     "st": "Closed Won",
-    "t": "Greek Dressing, 1.5oz"
+    "t": "Greek Dressing, 1.5oz",
+    "ps": 34992,
+    "psSrc": "title"
   },
   {
     "id": "OPP49",
@@ -87,7 +43,9 @@
     "stage": "Closed Won",
     "p": 100,
     "st": "Closed Won",
-    "t": "Hello Fresh Peanut Satay, 2 fl oz"
+    "t": "Hello Fresh Peanut Satay, 2 fl oz",
+    "ps": 0,
+    "psSrc": "linked"
   },
   {
     "id": "OPP21",
@@ -97,7 +55,9 @@
     "stage": "Closed Won",
     "p": 100,
     "st": "Closed Won",
-    "t": "GloriAnn Fresh Street Corn"
+    "t": "GloriAnn Fresh Street Corn",
+    "ps": null,
+    "psSrc": null
   },
   {
     "id": "OPP31",
@@ -107,7 +67,9 @@
     "stage": "Proposal",
     "p": 50,
     "st": "Issued Estimate",
-    "t": "Little Spoon Marinara"
+    "t": "Little Spoon Marinara",
+    "ps": null,
+    "psSrc": null
   },
   {
     "id": "OPP71",
@@ -117,7 +79,9 @@
     "stage": "Proposal",
     "p": 50,
     "st": "Issued Estimate",
-    "t": "Hello Fresh Japanese Creamy Sesame Dressing, 2 oz"
+    "t": "Hello Fresh Japanese Creamy Sesame Dressing, 2 oz",
+    "ps": null,
+    "psSrc": null
   },
   {
     "id": "OPP48",
@@ -127,7 +91,9 @@
     "stage": "Closed Won",
     "p": 100,
     "st": "Closed Won",
-    "t": "Sofrito Base"
+    "t": "Sofrito Base",
+    "ps": 0,
+    "psSrc": "linked"
   },
   {
     "id": "OPP33",
@@ -137,17 +103,9 @@
     "stage": "Proposal",
     "p": 50,
     "st": "Issued Estimate",
-    "t": "Factor Gochujang, Bulk"
-  },
-  {
-    "id": "OPP39",
-    "d": "11/20/2025",
-    "c": "Hello Fresh",
-    "a": 84000,
-    "stage": "Closed Lost",
-    "p": 0,
-    "st": "Closed Lost",
-    "t": "Hello Fresh Szechuan Sauce"
+    "t": "Factor Gochujang, Bulk",
+    "ps": null,
+    "psSrc": null
   },
   {
     "id": "OPP63",
@@ -157,7 +115,9 @@
     "stage": "In Discussion",
     "p": 20,
     "st": "In Progress",
-    "t": "FR Tahini/Tahini Paste 1oz"
+    "t": "FR Tahini/Tahini Paste 1oz",
+    "ps": null,
+    "psSrc": null
   },
   {
     "id": "OPP5",
@@ -167,17 +127,9 @@
     "stage": "Closed Won",
     "p": 100,
     "st": "Closed Won",
-    "t": "Bacon Jam, 1oz"
-  },
-  {
-    "id": "OPP16",
-    "d": "9/22/2025",
-    "c": "Hello Fresh",
-    "a": 67200,
-    "stage": "Closed Lost",
-    "p": 0,
-    "st": "Closed Lost",
-    "t": "Hello Fresh Pumpkin Puree, 7.5oz"
+    "t": "Bacon Jam, 1oz",
+    "ps": 23876,
+    "psSrc": "linked"
   },
   {
     "id": "OPP59",
@@ -187,17 +139,9 @@
     "stage": "Proposal",
     "p": 50,
     "st": "In Progress",
-    "t": "Deep Roasted Sesame Dressing, 1.5oz"
-  },
-  {
-    "id": "OPP12",
-    "d": "9/10/2025",
-    "c": "Just Date",
-    "a": 56000,
-    "stage": "Closed Lost",
-    "p": 0,
-    "st": "Closed Lost",
-    "t": "Just Date Retail Project"
+    "t": "Deep Roasted Sesame Dressing, 1.5oz",
+    "ps": null,
+    "psSrc": null
   },
   {
     "id": "OPP17",
@@ -207,7 +151,9 @@
     "stage": "Closed Won",
     "p": 100,
     "st": "Closed Won",
-    "t": "FG- HF Apricot, 1oz"
+    "t": "FG- HF Apricot, 1oz",
+    "ps": 100701,
+    "psSrc": "linked"
   },
   {
     "id": "OPP60",
@@ -217,47 +163,9 @@
     "stage": "Proposal",
     "p": 50,
     "st": "In Progress",
-    "t": "Chimichurri Sauce ,50g"
-  },
-  {
-    "id": "OPP34",
-    "d": "11/14/2025",
-    "c": "Hello Fresh",
-    "a": 41629,
-    "stage": "Closed Lost",
-    "p": 0,
-    "st": "Closed Lost",
-    "t": "Factor Soy Sauce, Bulk"
-  },
-  {
-    "id": "OPP43",
-    "d": "12/9/2025",
-    "c": "Hello Fresh",
-    "a": 36120,
-    "stage": "Closed Lost",
-    "p": 0,
-    "st": "Closed Lost",
-    "t": "Hello Fresh Cornichons, 3oz"
-  },
-  {
-    "id": "OPP42",
-    "d": "12/9/2025",
-    "c": "Hello Fresh",
-    "a": 35700,
-    "stage": "Closed Lost",
-    "p": 0,
-    "st": "Closed Lost",
-    "t": "Hello Fresh Capers, 1oz"
-  },
-  {
-    "id": "OPP32",
-    "d": "11/11/2025",
-    "c": "Quince & Apple",
-    "a": 33987.5,
-    "stage": "Closed Lost",
-    "p": 0,
-    "st": "Closed Lost",
-    "t": "Quince & Apple Mustard, 1oz and 2oz"
+    "t": "Chimichurri Sauce ,50g",
+    "ps": null,
+    "psSrc": null
   },
   {
     "id": "OPP25",
@@ -267,17 +175,9 @@
     "stage": "Closed Won",
     "p": 100,
     "st": "Closed Won",
-    "t": "Hello Fresh Nuoc Cham, 1 fl oz"
-  },
-  {
-    "id": "OPP50",
-    "d": "1/21/2026",
-    "c": "Hello Fresh",
-    "a": 25500,
-    "stage": "Closed Lost",
-    "p": 0,
-    "st": "Closed Lost",
-    "t": "Hello Fresh Mirin, 25ml"
+    "t": "Hello Fresh Nuoc Cham, 1 fl oz",
+    "ps": 0,
+    "psSrc": "linked"
   },
   {
     "id": "OPP62",
@@ -287,7 +187,9 @@
     "stage": "Proposal",
     "p": 50,
     "st": "In Progress",
-    "t": "FR Fish Sauce, .5oz"
+    "t": "FR Fish Sauce, .5oz",
+    "ps": 14336,
+    "psSrc": "title"
   },
   {
     "id": "OPP37",
@@ -297,27 +199,9 @@
     "stage": "Closed Won",
     "p": 100,
     "st": "Closed Won",
-    "t": "Hello Fresh General Tso's Sauce, 3oz"
-  },
-  {
-    "id": "OPP27",
-    "d": "10/23/2025",
-    "c": "Hello Fresh",
-    "a": 20683.6,
-    "stage": "Closed Lost",
-    "p": 0,
-    "st": "Closed Lost",
-    "t": "Hello Fresh Doenjang Soybean Paste, 1oz"
-  },
-  {
-    "id": "OPP36",
-    "d": "11/20/2025",
-    "c": "Hello Fresh",
-    "a": 20350,
-    "stage": "Closed Lost",
-    "p": 0,
-    "st": "Closed Lost",
-    "t": "Hello Fresh Sweet & Sour Sauce, 3 oz"
+    "t": "Hello Fresh General Tso's Sauce, 3oz",
+    "ps": 0,
+    "psSrc": "linked"
   },
   {
     "id": "OPP26",
@@ -327,67 +211,9 @@
     "stage": "Closed Won",
     "p": 100,
     "st": "Closed Won",
-    "t": "Hello Fresh Fish Sauce, .5 fl oz"
-  },
-  {
-    "id": "OPP7",
-    "d": "9/8/2025",
-    "c": "Victoria Pacific",
-    "a": 15000,
-    "stage": "Closed Lost",
-    "p": 0,
-    "st": "Closed Lost",
-    "t": "Victoria Pacific Hoisin/Sambal, 7g"
-  },
-  {
-    "id": "OPP10",
-    "d": "9/10/2025",
-    "c": "Hillside Harvest (c)",
-    "a": 13854.54,
-    "stage": "Closed Lost",
-    "p": 0,
-    "st": "Closed Lost",
-    "t": "Hillside Harvest Retail Project"
-  },
-  {
-    "id": "OPP9",
-    "d": "9/10/2025",
-    "c": "Midwest Foods/Edible Cuts",
-    "a": 13650,
-    "stage": "Closed Lost",
-    "p": 0,
-    "st": "Closed Lost",
-    "t": "Avo Mayo/Peanut Butter/Sambal - BULK"
-  },
-  {
-    "id": "OPP35",
-    "d": "11/20/2025",
-    "c": "Hello Fresh",
-    "a": 12015,
-    "stage": "Closed Lost",
-    "p": 0,
-    "st": "Closed Lost",
-    "t": "Hello Fresh Soy Sauce, Gluten-Free, 1 fl oz"
-  },
-  {
-    "id": "OPP38",
-    "d": "11/20/2025",
-    "c": "Hello Fresh",
-    "a": 10400,
-    "stage": "Closed Lost",
-    "p": 0,
-    "st": "Closed Lost",
-    "t": "Hello Fresh Char Siu sauce, 2-3oz"
-  },
-  {
-    "id": "OPP14",
-    "d": "9/10/2025",
-    "c": "Spread MMMs",
-    "a": 7982.58,
-    "stage": "Closed Lost",
-    "p": 0,
-    "st": "Closed Lost",
-    "t": "Olive Tapanede, Retail"
+    "t": "Hello Fresh Fish Sauce, .5 fl oz",
+    "ps": 14336,
+    "psSrc": "title"
   },
   {
     "id": "OPP61",
@@ -397,37 +223,9 @@
     "stage": "Proposal",
     "p": 50,
     "st": "In Progress",
-    "t": "Red Curry Bulk"
-  },
-  {
-    "id": "OPP47",
-    "d": "12/19/2025",
-    "c": "Little Spoon",
-    "a": 5250,
-    "stage": "Closed Lost",
-    "p": 0,
-    "st": "Closed Lost",
-    "t": "Little Spoon Gluten Free Teriyaki, 5G"
-  },
-  {
-    "id": "OPP11",
-    "d": "9/10/2025",
-    "c": "AvoPacific",
-    "a": 3972,
-    "stage": "Closed Lost",
-    "p": 0,
-    "st": "Closed Lost",
-    "t": "AvoPacific, SS Packs (Costco)"
-  },
-  {
-    "id": "OPP29",
-    "d": "11/3/2025",
-    "c": "Feast Food Enterprises, LLC",
-    "a": 3316.6,
-    "stage": "Closed Lost",
-    "p": 0,
-    "st": "Closed Lost",
-    "t": "Procurement (11/3/25)"
+    "t": "Red Curry Bulk",
+    "ps": null,
+    "psSrc": null
   },
   {
     "id": "OPP65",
@@ -437,7 +235,9 @@
     "stage": "Proposal",
     "p": 50,
     "st": "Issued Estimate",
-    "t": "Sesame Oil Bulk Drum"
+    "t": "Sesame Oil Bulk Drum",
+    "ps": null,
+    "psSrc": null
   },
   {
     "id": "OPP69",
@@ -447,17 +247,9 @@
     "stage": "Proposal",
     "p": 50,
     "st": "Issued Estimate",
-    "t": "Vegan Worcestershire Bulk"
-  },
-  {
-    "id": "OPP44",
-    "d": "12/9/2025",
-    "c": "Hello Fresh",
-    "a": 1.15,
-    "stage": "Closed Lost",
-    "p": 0,
-    "st": "Closed Lost",
-    "t": "Hello Fresh Pickled Jalape\u00f1os, 2oz"
+    "t": "Vegan Worcestershire Bulk",
+    "ps": null,
+    "psSrc": null
   },
   {
     "id": "OPP51",
@@ -467,27 +259,9 @@
     "stage": "Proposal",
     "p": 50,
     "st": "Issued Estimate",
-    "t": "Beyond Good Vanilla Powder, 5g"
-  },
-  {
-    "id": "OPP24",
-    "d": "10/16/2025",
-    "c": "Blue Apron LLC",
-    "a": 0.25,
-    "stage": "Closed Lost",
-    "p": 0,
-    "st": "Closed Lost",
-    "t": "Blue Apron Maple Syrup, .5 fl oz"
-  },
-  {
-    "id": "OPP4",
-    "d": "9/3/2025",
-    "c": "Brooklyn Delhi",
-    "a": 0.09,
-    "stage": "Closed Lost",
-    "p": 0,
-    "st": "Closed Lost",
-    "t": "Brooklyn Delhi Tolling, 1.5 oz"
+    "t": "Beyond Good Vanilla Powder, 5g",
+    "ps": null,
+    "psSrc": null
   },
   {
     "id": "OPP82",
@@ -497,7 +271,9 @@
     "stage": "In Discussion",
     "p": 20,
     "st": "In Progress",
-    "t": "Misfits Market 2026 RFP"
+    "t": "Misfits Market 2026 RFP",
+    "ps": null,
+    "psSrc": null
   },
   {
     "id": "OPP81",
@@ -507,7 +283,9 @@
     "stage": "In Discussion",
     "p": 20,
     "st": "In Progress",
-    "t": "Hello Fresh Greef Sofrito, 3 oz"
+    "t": "Hello Fresh Greef Sofrito, 3 oz",
+    "ps": null,
+    "psSrc": null
   },
   {
     "id": "OPP73",
@@ -517,17 +295,9 @@
     "stage": "In Discussion",
     "p": 20,
     "st": "In Progress",
-    "t": "Hello Fresh Shredded Monterey Jack (1 oz)"
-  },
-  {
-    "id": "OPP77",
-    "d": "5/6/2026",
-    "c": "Hello Fresh",
-    "a": 0,
-    "stage": "Closed Lost",
-    "p": 0,
-    "st": "Closed Lost",
-    "t": "Hello Fresh Shredded Mozzarella (2 oz)"
+    "t": "Hello Fresh Shredded Monterey Jack (1 oz)",
+    "ps": null,
+    "psSrc": null
   },
   {
     "id": "OPP80",
@@ -537,37 +307,9 @@
     "stage": "In Discussion",
     "p": 20,
     "st": "In Progress",
-    "t": "Hello Fresh Shredded Cheddar (2 oz)"
-  },
-  {
-    "id": "OPP79",
-    "d": "5/6/2026",
-    "c": "Hello Fresh",
-    "a": 0,
-    "stage": "Closed Lost",
-    "p": 0,
-    "st": "Closed Lost",
-    "t": "Hello Fresh Shredded Mozzarella (2 oz)"
-  },
-  {
-    "id": "OPP78",
-    "d": "5/6/2026",
-    "c": "Hello Fresh",
-    "a": 0,
-    "stage": "Closed Lost",
-    "p": 0,
-    "st": "Closed Lost",
-    "t": "Hello Fresh Shredded Monterey Jack (1 oz)"
-  },
-  {
-    "id": "OPP76",
-    "d": "5/6/2026",
-    "c": "Hello Fresh",
-    "a": 0,
-    "stage": "Closed Lost",
-    "p": 0,
-    "st": "Closed Lost",
-    "t": "Hello Fresh Shredded Monterey Jack (1 oz)"
+    "t": "Hello Fresh Shredded Cheddar (2 oz)",
+    "ps": null,
+    "psSrc": null
   },
   {
     "id": "OPP74",
@@ -577,7 +319,9 @@
     "stage": "In Discussion",
     "p": 20,
     "st": "In Progress",
-    "t": "Hello Fresh Shredded Mozzarella (2 oz)"
+    "t": "Hello Fresh Shredded Mozzarella (2 oz)",
+    "ps": null,
+    "psSrc": null
   },
   {
     "id": "OPP75",
@@ -587,7 +331,9 @@
     "stage": "In Discussion",
     "p": 20,
     "st": "In Progress",
-    "t": "Hello Fresh Shredded Mexican Cheese Blend (2 oz)"
+    "t": "Hello Fresh Shredded Mexican Cheese Blend (2 oz)",
+    "ps": null,
+    "psSrc": null
   },
   {
     "id": "OPP72",
@@ -597,7 +343,9 @@
     "stage": "In Discussion",
     "p": 20,
     "st": "In Progress",
-    "t": "Hello Fresh Shredded Gruyere, 2oz"
+    "t": "Hello Fresh Shredded Gruyere, 2oz",
+    "ps": null,
+    "psSrc": null
   },
   {
     "id": "OPP70",
@@ -607,7 +355,9 @@
     "stage": "Proposal",
     "p": 50,
     "st": "Issued Estimate",
-    "t": "Factor Bulk Tamarind Paste"
+    "t": "Factor Bulk Tamarind Paste",
+    "ps": null,
+    "psSrc": null
   },
   {
     "id": "OPP68",
@@ -617,7 +367,9 @@
     "stage": "Proposal",
     "p": 50,
     "st": "Issued Estimate",
-    "t": "New Product- .75oz parm cheese"
+    "t": "New Product- .75oz parm cheese",
+    "ps": null,
+    "psSrc": null
   },
   {
     "id": "OPP66",
@@ -627,7 +379,9 @@
     "stage": "In Discussion",
     "p": 20,
     "st": "In Progress",
-    "t": "New Product- Hello Fresh Vegan Sour Cream"
+    "t": "New Product- Hello Fresh Vegan Sour Cream",
+    "ps": null,
+    "psSrc": null
   },
   {
     "id": "OPP64",
@@ -637,7 +391,9 @@
     "stage": "In Discussion",
     "p": 20,
     "st": "In Progress",
-    "t": "A-sha Black Garlic Oil, 1 oz"
+    "t": "A-sha Black Garlic Oil, 1 oz",
+    "ps": null,
+    "psSrc": null
   },
   {
     "id": "OPP58",
@@ -647,7 +403,9 @@
     "stage": "In Discussion",
     "p": 20,
     "st": "In Progress",
-    "t": "A-sha Chili Crisp Bulk"
+    "t": "A-sha Chili Crisp Bulk",
+    "ps": null,
+    "psSrc": null
   },
   {
     "id": "OPP56",
@@ -657,27 +415,9 @@
     "stage": "In Discussion",
     "p": 20,
     "st": "In Progress",
-    "t": "Truffle Honey Packs"
-  },
-  {
-    "id": "OPP55",
-    "d": "2/6/2026",
-    "c": "Great Eastern Seafood",
-    "a": 0,
-    "stage": "Closed Lost",
-    "p": 0,
-    "st": "Closed Lost",
-    "t": "GES Honey Buffalo, 7oz"
-  },
-  {
-    "id": "OPP54",
-    "d": "2/4/2026",
-    "c": "Little Spoon",
-    "a": 0,
-    "stage": "Closed Lost",
-    "p": 0,
-    "st": "Closed Lost",
-    "t": "Little Spoon Butternut squash mac & cheese sauce"
+    "t": "Truffle Honey Packs",
+    "ps": null,
+    "psSrc": null
   },
   {
     "id": "OPP53",
@@ -687,27 +427,9 @@
     "stage": "In Discussion",
     "p": 20,
     "st": "In Progress",
-    "t": "More Than Gourmet Concentrate, 2oz"
-  },
-  {
-    "id": "OPP46",
-    "d": "12/17/2025",
-    "c": "Blends by Mila",
-    "a": 0,
-    "stage": "Closed Lost",
-    "p": 0,
-    "st": "Closed Lost",
-    "t": "Blends By Mila, 12oz"
-  },
-  {
-    "id": "OPP45",
-    "d": "12/9/2025",
-    "c": "Hello Fresh",
-    "a": 0,
-    "stage": "Closed Lost",
-    "p": 0,
-    "st": "Closed Lost",
-    "t": "Hello Fresh, Pineapple and Mango Fruit Cups, 4oz"
+    "t": "More Than Gourmet Concentrate, 2oz",
+    "ps": null,
+    "psSrc": null
   },
   {
     "id": "OPP41",
@@ -717,17 +439,9 @@
     "stage": "Proposal",
     "p": 50,
     "st": "In Progress",
-    "t": "MP Branded Airport condiments"
-  },
-  {
-    "id": "OPP40",
-    "d": "11/24/2025",
-    "c": "Wonder",
-    "a": 0,
-    "stage": "Closed Lost",
-    "p": 0,
-    "st": "Closed Lost",
-    "t": "Wonder Frozen Pizza Balls"
+    "t": "MP Branded Airport condiments",
+    "ps": null,
+    "psSrc": null
   },
   {
     "id": "OPP30",
@@ -737,17 +451,9 @@
     "stage": "In Discussion",
     "p": 20,
     "st": "In Progress",
-    "t": "Little Spoon Ranch"
-  },
-  {
-    "id": "OPP22",
-    "d": "10/8/2025",
-    "c": "Wonder",
-    "a": 0,
-    "stage": "Closed Lost",
-    "p": 0,
-    "st": "Closed Lost",
-    "t": "New Product - Wonder Round 1"
+    "t": "Little Spoon Ranch",
+    "ps": null,
+    "psSrc": null
   },
   {
     "id": "OPP20",
@@ -757,16 +463,8 @@
     "stage": "Proposal",
     "p": 50,
     "st": "In Progress",
-    "t": "626 Food Group frozen meal kitting (Noodles, Pork Tankatsu, Black Garic Oil)"
-  },
-  {
-    "id": "OPP15",
-    "d": "9/10/2025",
-    "c": "True Made Foods Inc",
-    "a": 0,
-    "stage": "Closed Lost",
-    "p": 0,
-    "st": "Closed Lost",
-    "t": "BBQ Sauce, True Made Foods"
+    "t": "626 Food Group frozen meal kitting (Noodles, Pork Tankatsu, Black Garic Oil)",
+    "ps": null,
+    "psSrc": null
   }
 ]
