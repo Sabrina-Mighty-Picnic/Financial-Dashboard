@@ -627,7 +627,8 @@ function Overview(props: {
   const {
     tR, tE, tC, gpFY, rG, eG, aAR, lyAAR, gmCY, gmLY, yr, yd, newCustYr, newSkuYr, growthChart, custDetails, skuDetails,
   } = props;
-  const opMargin = tR > 0 ? ((tR - tE) / tR) * 100 : 0;
+  const opMargin = tR > 0 ? ((tR - tC - tE) / tR) * 100 : 0;
+  const opProfit = tR - tC - tE;
   const gmDelta = gmCY - gmLY;
   const chartData = yd.map((d) => ({ month: ml(d.m), Revenue: d.r, Expenses: d.e }));
   return (
@@ -644,7 +645,7 @@ function Overview(props: {
           up={gmDelta >= 0}
         />
         <KPI label="Operating Expenses" value={fmt(tE)} trend={eG} up={eG <= 0} />
-        <KPI label="Operating Margin" value={pc(opMargin)} sub={fmt(tR - tE) + " op profit"} />
+        <KPI label="Operating Margin" value={pc(opMargin)} sub={fmt(opProfit) + " op profit"} up={opMargin >= 0} />
         <KPI
           label="AR Days"
           value={aAR + " days"}
