@@ -1424,7 +1424,7 @@ function ARDays({
 }
 
 function Opportunities() {
-  const all = OPPS as Array<{ id: string; d: string; c: string; a: number; stage: string; p: number; st: string; t: string; ps: number | null; psSrc: string | null }>;
+  const all = OPPS as Array<{ id: string; d: string; c: string; a: number; stage: string; p: number; st: string; t: string; ps: number | null; psSrc: string | null; expC: string | null; actC: string | null; dDays: number | null; dToExp: number | null }>;
   const open = all.filter((o) => o.st === "In Progress" || o.st === "Issued Estimate");
   const won = all.filter((o) => o.st === "Closed Won");
   const openValue = open.reduce((s, o) => s + o.a, 0);
@@ -1511,6 +1511,114 @@ function Opportunities() {
           </div>
         </Cd>
       </div>
+
+      <Sec sub="Estimated close date (set when opp was created) vs actual close date for Won opportunities">
+        Close Date Performance
+      </Sec>
+      {(() => {
+        const wonWithDates = all.filter((o) => o.st === "Closed Won" && o.dDays !== null);
+        const variances = wonWithDates.map((o) => o.dDays as number);
+        const avgVar = variances.length ? variances.reduce((a, b) => a + b, 0) / variances.length : 0;
+        const early = variances.filter((d) => d < -7).length;
+        const onTime = variances.filter((d) => Math.abs(d) <= 7).length;
+        const late = variances.filter((d) => d > 7).length;
+        const onTimePct = variances.length ? ((early + onTime) / variances.length) * 100 : 0;
+        const fmtDays = (n: number) => (n > 0 ? "+" : "") + n + "d";
+        const fmtDate = (d: string | null) => (d ? d.slice(5).replace("-", "/") + "/" + d.slice(2, 4) : "—");
+        const openWithExp = all.filter((o) => (o.st === "In Progress" || o.st === "Issued Estimate") && o.expC && o.dToExp !== null);
+        const overdue = openWithExp.filter((o) => (o.dToExp as number) < 0);
+        return (
+          <>
+            <div style={{ display: "flex", gap: 16, flexWrap: "wrap", marginBottom: 16 }}>
+              <KPI
+                label="Avg Close Variance"
+                value={fmtDays(Math.round(avgVar))}
+                sub={avgVar < 0 ? "Closing earlier than estimated" : avgVar > 0 ? "Slipping past estimate" : "On forecast"}
+                up={avgVar <= 0}
+              />
+              <KPI label="On-time + Early" value={pc(onTimePct)} sub={`${early + onTime} of ${variances.length} won opps`} up={onTimePct >= 60} />
+              <KPI label="Closed Early" value={String(early)} sub=">7 days before estimate" up={true} />
+              <KPI label="Closed Late" value={String(late)} sub=">7 days after estimate" up={late === 0} />
+              <KPI label="Open Overdue" value={String(overdue.length)} sub={`${openWithExp.length} open with est. close set`} up={overdue.length === 0} />
+            </div>
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, marginBottom: 24 }}>
+              <Cd title="Won opps: estimated vs actual close">
+                <div style={{ overflowX: "auto" }}>
+                  <table style={{ width: "100%", borderCollapse: "collapse" }}>
+                    <thead>
+                      <tr>
+                        <TH left>Opp</TH>
+                        <TH left>Customer</TH>
+                        <TH>Est. Close</TH>
+                        <TH>Actual Close</TH>
+                        <TH>Δ Days</TH>
+                        <TH>Amount</TH>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {wonWithDates
+                        .slice()
+                        .sort((a, b) => (a.dDays as number) - (b.dDays as number))
+                        .map((o) => (
+                          <tr key={o.id}>
+                            <TD left bold>{o.id}</TD>
+                            <TD left>{o.c}</TD>
+                            <TD>{fmtDate(o.expC)}</TD>
+                            <TD>{fmtDate(o.actC)}</TD>
+                            <TD
+                              color={
+                                (o.dDays as number) < -7
+                                  ? C.gn
+                                  : Math.abs(o.dDays as number) <= 7
+                                    ? C.tx
+                                    : C.rd
+                              }
+                              bold
+                            >
+                              {fmtDays(o.dDays as number)}
+                            </TD>
+                            <TD>{ff(o.a)}</TD>
+                          </tr>
+                        ))}
+                    </tbody>
+                  </table>
+                </div>
+              </Cd>
+              <Cd title="Open opps: days to estimated close">
+                <div style={{ overflowY: "auto", maxHeight: 320 }}>
+                  <table style={{ width: "100%", borderCollapse: "collapse" }}>
+                    <thead>
+                      <tr>
+                        <TH left>Opp</TH>
+                        <TH left>Customer</TH>
+                        <TH>Est. Close</TH>
+                        <TH>Days</TH>
+                        <TH>Amount</TH>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {openWithExp
+                        .slice()
+                        .sort((a, b) => (a.dToExp as number) - (b.dToExp as number))
+                        .map((o) => (
+                          <tr key={o.id}>
+                            <TD left bold>{o.id}</TD>
+                            <TD left>{o.c}</TD>
+                            <TD>{fmtDate(o.expC)}</TD>
+                            <TD color={(o.dToExp as number) < 0 ? C.rd : (o.dToExp as number) < 30 ? C.am : C.gn} bold>
+                              {fmtDays(o.dToExp as number)}
+                            </TD>
+                            <TD>{ff(o.a)}</TD>
+                          </tr>
+                        ))}
+                    </tbody>
+                  </table>
+                </div>
+              </Cd>
+            </div>
+          </>
+        );
+      })()}
 
       <div style={{ marginTop: 24 }}>
         <Cd title="Open & won opportunities (sorted by value)">
